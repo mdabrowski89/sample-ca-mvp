@@ -1,6 +1,6 @@
 package pl.mobite.sample.ca.mvp.ui.base
 
-import pl.mobite.sample.ca.mvp.data.Storage
+import pl.mobite.sample.ca.mvp.utils.Storage
 
 
 abstract class StatablePresenter<S: State<V>, V: View>(view: V): Presenter<V>(view) {

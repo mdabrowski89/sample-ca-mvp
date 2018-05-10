@@ -3,8 +3,6 @@ package pl.mobite.sample.ca.mvp.ui.components.userslist.state
 import org.junit.Before
 import org.junit.Test
 import pl.mobite.sample.ca.mvp.data.models.RepositoryErrorType
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.DisplayInitialErrorState
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.LoadInitialUsersPageState
 import pl.mobite.sample.ca.mvp.utils.extensions.*
 
 class DisplayInitialErrorStateTest: AbstractUsersListPresenterStateTest() {

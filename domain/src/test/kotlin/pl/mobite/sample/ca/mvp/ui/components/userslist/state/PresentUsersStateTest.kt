@@ -4,9 +4,6 @@ import org.junit.Before
 import org.junit.Test
 import pl.mobite.sample.ca.mvp.data.models.PageMetadata
 import pl.mobite.sample.ca.mvp.data.models.User
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.LoadInitialUsersPageState
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.LoadUsersPageState
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.PresentUsersState
 import pl.mobite.sample.ca.mvp.utils.extensions.*
 
 class PresentUsersStateTest: AbstractUsersListPresenterStateTest() {

@@ -5,8 +5,6 @@ import org.junit.Test
 import pl.mobite.sample.ca.mvp.data.models.Page
 import pl.mobite.sample.ca.mvp.data.models.PageMetadata
 import pl.mobite.sample.ca.mvp.data.models.User
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.MergeUsersPageState
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.PresentUsersState
 import pl.mobite.sample.ca.mvp.utils.extensions.createPowerMock
 import pl.mobite.sample.ca.mvp.utils.extensions.lazyPowerMock
 import pl.mobite.sample.ca.mvp.utils.extensions.verifyZeroInteractions

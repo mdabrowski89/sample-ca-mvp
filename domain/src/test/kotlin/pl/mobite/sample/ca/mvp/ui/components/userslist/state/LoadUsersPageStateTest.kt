@@ -8,10 +8,6 @@ import pl.mobite.sample.ca.mvp.data.models.PageMetadata
 import pl.mobite.sample.ca.mvp.data.models.RepositoryErrorType
 import pl.mobite.sample.ca.mvp.data.models.User
 import pl.mobite.sample.ca.mvp.data.repositories.UsersRepository
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.DisplayErrorState
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.LoadInitialUsersPageState
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.LoadUsersPageState
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.MergeUsersPageState
 import pl.mobite.sample.ca.mvp.utils.extensions.*
 
 class LoadUsersPageStateTest: AbstractUsersListPresenterStateTest() {

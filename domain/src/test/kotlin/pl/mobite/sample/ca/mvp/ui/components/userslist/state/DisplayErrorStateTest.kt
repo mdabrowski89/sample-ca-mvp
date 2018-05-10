@@ -4,9 +4,6 @@ import org.junit.Before
 import org.junit.Test
 import pl.mobite.sample.ca.mvp.data.models.PageMetadata
 import pl.mobite.sample.ca.mvp.data.models.RepositoryErrorType
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.DisplayErrorState
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.DisplayInitialErrorState
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.PresentUsersState
 import pl.mobite.sample.ca.mvp.utils.extensions.*
 
 

@@ -2,8 +2,6 @@ package pl.mobite.sample.ca.mvp.ui.components.userslist.state
 
 import org.junit.Before
 import org.junit.Test
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.LoadInitialUsersPageState
-import pl.mobite.sample.ca.mvp.ui.components.userlist.state.LoadUsersPageState
 import pl.mobite.sample.ca.mvp.utils.extensions.createPowerMock
 import pl.mobite.sample.ca.mvp.utils.extensions.verifyZeroInteractions
 
