@@ -5,7 +5,6 @@ import android.app.Application
 import android.support.v7.app.AppCompatDelegate
 import pl.mobite.sample.ca.mvp.di.AppComponent
 import pl.mobite.sample.ca.mvp.di.DaggerAppComponent
-import pl.mobite.sample.ca.mvp.di.modules.AppModule
 import pl.mobite.sample.ca.mvp.di.modules.RepositoryModule
 
 class MyApp : Application() {
@@ -13,7 +12,6 @@ class MyApp : Application() {
     val appComponent: AppComponent by lazy {
         DaggerAppComponent
                 .builder()
-                .appModule(AppModule(this))
                 .repositoryModule(RepositoryModule())
                 .build()
     }
@@ -22,8 +20,6 @@ class MyApp : Application() {
         super.onCreate()
 
         instance = this
-
-        appComponent.inject(this)
 
         initCompatVectorResources()
     }
