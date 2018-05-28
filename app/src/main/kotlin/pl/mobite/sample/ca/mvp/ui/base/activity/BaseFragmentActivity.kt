@@ -1,7 +1,7 @@
 package pl.mobite.sample.ca.mvp.ui.base.activity
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import pl.mobite.sample.ca.mvp.R
 
 
@@ -23,7 +23,7 @@ abstract class BaseFragmentActivity<T: Fragment>: BaseActivity() {
 
             supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.fragment_container, childFragment, CHILD_FRAGMENT_TAG)
+                    .replace(R.id.fragment_container, childFragment as Fragment, CHILD_FRAGMENT_TAG)
                     .commit()
         }
     }

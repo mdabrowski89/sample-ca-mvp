@@ -1,9 +1,9 @@
 package pl.mobite.sample.ca.mvp.ui.custom.recyclerview.paged
 
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import pl.mobite.sample.ca.mvp.ui.custom.recyclerview.CustomViewHolder
+import androidx.recyclerview.widget.RecyclerView
 import pl.mobite.sample.ca.mvp.R
+import pl.mobite.sample.ca.mvp.ui.custom.recyclerview.CustomViewHolder
 import pl.mobite.sample.ca.mvp.utils.extensions.inflate
 import java.util.concurrent.atomic.AtomicBoolean
 

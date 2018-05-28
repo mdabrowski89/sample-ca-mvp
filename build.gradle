@@ -29,15 +29,12 @@ task clean(type: Delete) {
 
 configure(allprojects) {
     ext {
-        androidMinSdkVersion = 17
-        androidTargetSdkVersion = 27
-        androidCompileSdkVersion = 27
+        androidxVersion = "1.0.0-alpha1"
 
-        androidBuildToolsVersion = "27.0.3"
-        androidSupportLibraryVersion = "27.1.1"
+        room_version = "2.0.0-alpha1"
 
         rxJavaVersion = "2.1.0"
-        rxAndroidVersion = "2.0.1"
+        rxAndroidVersion = "2.0.2"
         daggerVersion = "2.16"
         materialDialogVersion = "0.9.6.0"
 

@@ -4,7 +4,7 @@ package pl.mobite.sample.ca.mvp.ui.components.userslist
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_users_list.*
 import pl.mobite.sample.ca.mvp.R
 import pl.mobite.sample.ca.mvp.data.models.User

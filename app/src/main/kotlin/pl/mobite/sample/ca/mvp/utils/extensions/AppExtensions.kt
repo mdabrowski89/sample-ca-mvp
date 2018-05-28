@@ -3,7 +3,7 @@ package pl.mobite.sample.ca.mvp.utils.extensions
 import android.app.Activity
 import android.app.Application
 import android.content.Intent
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import pl.mobite.sample.ca.mvp.MyApp
 import pl.mobite.sample.ca.mvp.di.AppComponent
 

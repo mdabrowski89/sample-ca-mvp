@@ -1,9 +1,9 @@
 package pl.mobite.sample.ca.mvp.utils.extensions
 
-import android.support.v7.widget.SwitchCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SwitchCompat
 
 
 fun ViewGroup.inflate(layoutRes: Int, attachToRoot: Boolean = false): View {

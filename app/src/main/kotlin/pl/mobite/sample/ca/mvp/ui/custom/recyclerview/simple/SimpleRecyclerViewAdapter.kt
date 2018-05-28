@@ -1,7 +1,7 @@
 package pl.mobite.sample.ca.mvp.ui.custom.recyclerview.simple
 
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import pl.mobite.sample.ca.mvp.ui.custom.recyclerview.CustomViewHolder
 
 

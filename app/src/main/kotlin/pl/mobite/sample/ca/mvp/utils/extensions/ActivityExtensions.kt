@@ -2,8 +2,8 @@ package pl.mobite.sample.ca.mvp.utils.extensions
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.support.v4.app.DialogFragment
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 
 
 inline fun <reified T: DialogFragment> AppCompatActivity.findDialog(dialogTag: String, newInstance: T): T {

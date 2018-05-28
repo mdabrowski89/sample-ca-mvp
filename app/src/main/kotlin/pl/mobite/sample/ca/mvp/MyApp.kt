@@ -2,7 +2,7 @@ package pl.mobite.sample.ca.mvp
 
 
 import android.app.Application
-import android.support.v7.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate
 import pl.mobite.sample.ca.mvp.di.AppComponent
 import pl.mobite.sample.ca.mvp.di.DaggerAppComponent
 import pl.mobite.sample.ca.mvp.di.modules.RepositoryModule

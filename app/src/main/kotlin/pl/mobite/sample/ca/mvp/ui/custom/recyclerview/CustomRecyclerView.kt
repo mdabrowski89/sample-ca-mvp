@@ -1,13 +1,13 @@
 package pl.mobite.sample.ca.mvp.ui.custom.recyclerview
 
 import android.content.Context
-import android.support.annotation.LayoutRes
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
+import androidx.annotation.LayoutRes
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlinx.android.synthetic.main.custom_recycler_view.view.*
 import pl.mobite.sample.ca.mvp.R
 import pl.mobite.sample.ca.mvp.utils.extensions.inflate

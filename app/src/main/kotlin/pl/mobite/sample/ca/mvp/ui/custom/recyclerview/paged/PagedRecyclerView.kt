@@ -1,8 +1,8 @@
 package pl.mobite.sample.ca.mvp.ui.custom.recyclerview.paged
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.custom_recycler_view.view.*
 import pl.mobite.sample.ca.mvp.ui.custom.recyclerview.CustomRecyclerView
 
@@ -55,8 +55,8 @@ abstract class PagedRecyclerView<T, out A: PagedRecyclerViewAdapter<T>> @JvmOver
              * Load next page if user scroll to the bottom
              */
             with(recyclerView) {
-                val lastVisibleItemPosition = childCount + layoutManager.getPosition(getChildAt(0))
-                if (lastVisibleItemPosition >= layoutManager.itemCount) {
+                val lastVisibleItemPosition = childCount + layoutManager!!.getPosition(getChildAt(0))
+                if (lastVisibleItemPosition >= layoutManager!!.itemCount) {
                     onScrolledToNextPageListener?.invoke()
                 }
             }

@@ -1,7 +1,7 @@
 package pl.mobite.sample.ca.mvp.ui.custom.recyclerview
 
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 
 abstract class CustomViewHolder<T>(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
