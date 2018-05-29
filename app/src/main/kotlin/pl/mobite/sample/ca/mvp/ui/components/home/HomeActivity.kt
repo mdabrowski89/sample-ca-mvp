@@ -12,6 +12,7 @@ import pl.mobite.sample.ca.mvp.R
 import pl.mobite.sample.ca.mvp.data.local.room.UserEntity
 import pl.mobite.sample.ca.mvp.ui.base.activity.BasePresenterActivity
 import pl.mobite.sample.ca.mvp.ui.components.userslist.UsersListActivity
+import pl.mobite.sample.ca.mvp.ui.components.userslist.withpaginglib.UsersListWithPagingLibActivity
 import pl.mobite.sample.ca.mvp.utils.Baker
 
 class HomeActivity : BasePresenterActivity<HomePresenter>(), HomeView {
@@ -24,8 +25,12 @@ class HomeActivity : BasePresenterActivity<HomePresenter>(), HomeView {
 
         showUsersButton.setOnClickListener { presenter.onShowUsersClicked() }
 
-        generateUsersButton.setOnClickListener{
+        generateUsersButton.setOnClickListener {
             generateUsers()
+        }
+
+        showUsersWithPagingButton.setOnClickListener {
+            showUsersListWitPaging()
         }
     }
 
@@ -49,6 +54,10 @@ class HomeActivity : BasePresenterActivity<HomePresenter>(), HomeView {
 
     override fun showUsersList() {
         startActivity(UsersListActivity.createIntent(this))
+    }
+
+    fun showUsersListWitPaging() {
+        startActivity(UsersListWithPagingLibActivity.createIntent(this))
     }
 
     companion object {

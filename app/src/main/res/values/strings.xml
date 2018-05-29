@@ -5,6 +5,8 @@
     <string name="tap_to_refresh_info">(tap to refresh)</string>
 
     <string name="main_show_users">Show Users List</string>
+    <string name="main_show_users_with_paging">Show Users List with Paging lib</string>
+    <string name="main_generate_users">Generate users</string>
 
     <string name="users_list_title">Users list</string>
     <string name="users_error_dialog_title">Upsss…</string>

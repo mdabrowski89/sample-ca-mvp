@@ -5,6 +5,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import pl.mobite.sample.ca.mvp.data.local.room.UserDao
+import pl.mobite.sample.ca.mvp.data.local.room.toUser
 import pl.mobite.sample.ca.mvp.data.models.Page
 import pl.mobite.sample.ca.mvp.data.models.PageMetadata
 import pl.mobite.sample.ca.mvp.data.models.User
@@ -21,8 +22,8 @@ class UsersRepositoryImpl(private val userDao: UserDao) : UsersRepository {
                     if (offset > count) {
                         throw Exception()
                     }
-                    val data = userDao.getRange(offset, ITEMS_PER_PAGE).map { userEntity ->
-                        User(userEntity.name, userEntity.age)
+                    val data = userDao.getRange(offset, ITEMS_PER_PAGE).map {
+                        it.toUser()
                     }
                     Page(data, PageMetadata(index, pageNumber))
                 }
@@ -34,8 +35,8 @@ class UsersRepositoryImpl(private val userDao: UserDao) : UsersRepository {
     override fun getUsers(): Single<List<User>> {
         return Single
                 .fromCallable {
-                    userDao.getAll().map { userEntity ->
-                        User(userEntity.name, userEntity.age)
+                    userDao.getAll().map {
+                        it.toUser()
                     }
                 }
                 .subscribeOn(Schedulers.io())

@@ -2,6 +2,7 @@ package pl.mobite.sample.ca.mvp.data.local.room
 
 import androidx.paging.DataSource
 import androidx.room.*
+import pl.mobite.sample.ca.mvp.data.models.User
 
 
 @Entity(tableName = "users")
@@ -13,11 +14,14 @@ data class UserEntity(
     constructor(): this(null, "", 0)
 }
 
+fun UserEntity.toUser() =
+    User(this.id, this.name, this.age)
+
 @Dao
 interface UserDao {
 
     @Query("SELECT * FROM users")
-    fun getAllAsPaged(): DataSource.Factory<Int, UserEntity>
+    fun getAllUsers(): DataSource.Factory<Int, UserEntity>
 
     @Query("SELECT count(*) FROM users")
     fun count(): Int

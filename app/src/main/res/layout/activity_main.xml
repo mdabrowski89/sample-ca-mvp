@@ -15,10 +15,16 @@
         android:text="@string/main_show_users"/>
 
     <Button
+        android:id="@+id/showUsersWithPagingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_show_users_with_paging"/>
+
+    <Button
         android:id="@+id/generateUsersButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Generate users"/>
+        android:text="@string/main_generate_users"/>
 
 </LinearLayout>

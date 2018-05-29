@@ -21,5 +21,6 @@
         <activity
             android:label="@string/users_list_title"
             android:name=".ui.components.userslist.UsersListActivity"/>
+        <activity android:name=".ui.components.userslist.withpaginglib.UsersListWithPagingLibActivity"/>
     </application>
 </manifest>

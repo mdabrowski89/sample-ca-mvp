@@ -66,6 +66,11 @@ dependencies {
     // optional - RxJava support
     implementation "androidx.paging:paging-rxjava2:$pagingVersion"
 
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+    // optional - ReactiveStreams support for LiveData
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycleVersion" // use -ktx for Kotlin
+
     // Testing  frameworks and tools
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
