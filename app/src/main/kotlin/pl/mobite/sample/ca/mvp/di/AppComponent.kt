@@ -4,7 +4,7 @@ import dagger.Component
 import pl.mobite.sample.ca.mvp.di.modules.DaoModule
 import pl.mobite.sample.ca.mvp.di.modules.RepositoryModule
 import pl.mobite.sample.ca.mvp.ui.components.userslist.UsersListActivity
-import pl.mobite.sample.ca.mvp.ui.components.userslist.withpaginglib.UsersViewModel
+import pl.mobite.sample.ca.mvp.ui.components.userlistpaging.UsersListPagingViewModel
 import javax.inject.Singleton
 
 
@@ -14,5 +14,5 @@ interface AppComponent {
 
     fun inject(activity: UsersListActivity)
 
-    fun inject(viewModel: UsersViewModel)
+    fun inject(listPagingViewModel: UsersListPagingViewModel)
 }

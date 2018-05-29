@@ -10,12 +10,13 @@ import pl.mobite.sample.ca.mvp.R
 import pl.mobite.sample.ca.mvp.data.models.User
 import pl.mobite.sample.ca.mvp.data.repositories.UsersRepository
 import pl.mobite.sample.ca.mvp.ui.base.activity.BasePresenterActivity
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListView
 import pl.mobite.sample.ca.mvp.utils.Baker
 import pl.mobite.sample.ca.mvp.utils.extensions.appComponent
 import pl.mobite.sample.ca.mvp.utils.extensions.visible
 import javax.inject.Inject
 
-class UsersListActivity : BasePresenterActivity<UsersListPresenter>(), UsersListView {
+class UsersListActivity : BasePresenterActivity<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListPresenter>(), UsersListView {
 
     @Inject lateinit var usersRepository: UsersRepository
 

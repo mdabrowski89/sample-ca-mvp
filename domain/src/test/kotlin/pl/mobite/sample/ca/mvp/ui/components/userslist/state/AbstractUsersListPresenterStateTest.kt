@@ -8,8 +8,9 @@ import pl.mobite.sample.ca.mvp.data.models.PageMetadata
 import pl.mobite.sample.ca.mvp.data.models.RepositoryErrorType
 import pl.mobite.sample.ca.mvp.data.models.User
 import pl.mobite.sample.ca.mvp.ui.base.BasePresenterStateTest
-import pl.mobite.sample.ca.mvp.ui.components.userslist.UsersListPresenter
-import pl.mobite.sample.ca.mvp.ui.components.userslist.UsersListView
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListPresenter
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListView
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.AbstractUsersListPresenterState
 
 
 @PrepareForTest(UsersListPresenter::class, PageMetadata::class, RepositoryErrorType::class, Page::class, User::class,

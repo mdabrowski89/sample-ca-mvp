@@ -6,13 +6,14 @@ import org.powermock.core.classloader.annotations.PrepareForTest
 import pl.mobite.sample.ca.mvp.data.models.User
 import pl.mobite.sample.ca.mvp.data.repositories.UsersRepository
 import pl.mobite.sample.ca.mvp.ui.base.BasePresenterTest
-import pl.mobite.sample.ca.mvp.ui.components.userslist.state.AbstractUsersListPresenterState
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListView
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.AbstractUsersListPresenterState
 import pl.mobite.sample.ca.mvp.utils.extensions.createPowerMock
 import pl.mobite.sample.ca.mvp.utils.extensions.lazyPowerMock
 import pl.mobite.sample.ca.mvp.utils.extensions.verify
 
 @PrepareForTest(User::class)
-class UsersListPresenterTest : BasePresenterTest<UsersListPresenter, UsersListView>() {
+class UsersListPresenterTest : BasePresenterTest<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListPresenter, UsersListView>() {
 
     private val usersRepositoryMock: UsersRepository by lazyPowerMock()
     private val stateMock: AbstractUsersListPresenterState by lazyPowerMock()

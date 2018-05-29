@@ -4,6 +4,8 @@ import org.junit.Before
 import org.junit.Test
 import pl.mobite.sample.ca.mvp.data.models.PageMetadata
 import pl.mobite.sample.ca.mvp.data.models.RepositoryErrorType
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.DisplayInitialErrorState
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.PresentUsersState
 import pl.mobite.sample.ca.mvp.utils.extensions.*
 
 
@@ -60,7 +62,7 @@ class DisplayErrorStateTest: AbstractUsersListPresenterStateTest() {
         state.onUserClicked(createPowerMock())
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<DisplayErrorState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.DisplayErrorState>()
     }
 
     @Test
@@ -70,7 +72,7 @@ class DisplayErrorStateTest: AbstractUsersListPresenterStateTest() {
         state.onRefreshUsers()
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<DisplayErrorState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.DisplayErrorState>()
     }
 
     @Test
@@ -80,6 +82,6 @@ class DisplayErrorStateTest: AbstractUsersListPresenterStateTest() {
         state.onLoadNextUsersPage()
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<DisplayErrorState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.DisplayErrorState>()
     }
 }

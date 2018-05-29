@@ -8,6 +8,9 @@ import pl.mobite.sample.ca.mvp.data.models.PageMetadata
 import pl.mobite.sample.ca.mvp.data.models.RepositoryErrorType
 import pl.mobite.sample.ca.mvp.data.models.User
 import pl.mobite.sample.ca.mvp.data.repositories.UsersRepository
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.DisplayErrorState
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.LoadUsersState
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.MergeUsersPageState
 import pl.mobite.sample.ca.mvp.utils.extensions.*
 
 class LoadUsersPageStateTest: AbstractUsersListPresenterStateTest() {
@@ -42,7 +45,7 @@ class LoadUsersPageStateTest: AbstractUsersListPresenterStateTest() {
 
         verify(viewMock).showLoadIndicator()
         // we stayed in the same state, because in this test we are only testing the load/refresh indicator
-        verifyStateIs<LoadUsersPageState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.LoadUsersPageState>()
     }
 
     @Test
@@ -57,7 +60,7 @@ class LoadUsersPageStateTest: AbstractUsersListPresenterStateTest() {
 
         verify(viewMock).showLoadIndicator()
         // we stayed in the same state, because in this test we are only testing the load/refresh indicator
-        verifyStateIs<LoadUsersPageState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.LoadUsersPageState>()
     }
 
     @Test
@@ -71,7 +74,7 @@ class LoadUsersPageStateTest: AbstractUsersListPresenterStateTest() {
 
         verify(viewMock).showRefreshIndicator()
         // we stayed in the same state, because in this test we are only testing the load/refresh indicator
-        verifyStateIs<LoadUsersPageState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.LoadUsersPageState>()
     }
 
     @Test
@@ -83,7 +86,7 @@ class LoadUsersPageStateTest: AbstractUsersListPresenterStateTest() {
 
         verify(viewMock).showRefreshIndicator()
         // we stayed in the same state, because in this test we are only testing the load/refresh indicator
-        verifyStateIs<LoadUsersPageState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.LoadUsersPageState>()
     }
 
     @Test
@@ -128,7 +131,7 @@ class LoadUsersPageStateTest: AbstractUsersListPresenterStateTest() {
         state.onUserClicked(userMock)
 
         verify(viewMock).showUserDetails(userMock)
-        verifyStateIs<LoadUsersPageState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.LoadUsersPageState>()
     }
 
     @Test
@@ -138,7 +141,7 @@ class LoadUsersPageStateTest: AbstractUsersListPresenterStateTest() {
         state.onRefreshUsers()
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<LoadInitialUsersPageState>()
+        verifyStateIs<LoadUsersState>()
     }
 
     @Test
@@ -148,6 +151,6 @@ class LoadUsersPageStateTest: AbstractUsersListPresenterStateTest() {
         state.onLoadNextUsersPage()
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<LoadUsersPageState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.LoadUsersPageState>()
     }
 }

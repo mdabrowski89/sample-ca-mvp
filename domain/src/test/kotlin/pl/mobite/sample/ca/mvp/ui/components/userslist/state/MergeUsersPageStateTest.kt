@@ -5,6 +5,7 @@ import org.junit.Test
 import pl.mobite.sample.ca.mvp.data.models.Page
 import pl.mobite.sample.ca.mvp.data.models.PageMetadata
 import pl.mobite.sample.ca.mvp.data.models.User
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.PresentUsersState
 import pl.mobite.sample.ca.mvp.utils.extensions.createPowerMock
 import pl.mobite.sample.ca.mvp.utils.extensions.lazyPowerMock
 import pl.mobite.sample.ca.mvp.utils.extensions.verifyZeroInteractions
@@ -54,7 +55,7 @@ class MergeUsersPageStateTest: AbstractUsersListPresenterStateTest() {
         state.onUserClicked(createPowerMock())
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<MergeUsersPageState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.MergeUsersPageState>()
     }
 
     @Test
@@ -64,7 +65,7 @@ class MergeUsersPageStateTest: AbstractUsersListPresenterStateTest() {
         state.onRefreshUsers()
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<MergeUsersPageState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.MergeUsersPageState>()
     }
 
     @Test
@@ -74,6 +75,6 @@ class MergeUsersPageStateTest: AbstractUsersListPresenterStateTest() {
         state.onLoadNextUsersPage()
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<MergeUsersPageState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.MergeUsersPageState>()
     }
 }

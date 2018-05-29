@@ -1,6 +1,5 @@
 package pl.mobite.sample.ca.mvp.ui.components.userslist
 
-import pl.mobite.sample.ca.mvp.utils.Storage
 import pl.mobite.sample.ca.mvp.data.models.PageMetadata
 import pl.mobite.sample.ca.mvp.data.models.PageMetadata.Companion.INITIAL_PAGE_INDEX
 import pl.mobite.sample.ca.mvp.data.models.User
@@ -8,6 +7,7 @@ import pl.mobite.sample.ca.mvp.data.repositories.UsersRepository
 import pl.mobite.sample.ca.mvp.ui.base.StatablePresenter
 import pl.mobite.sample.ca.mvp.ui.components.userslist.state.AbstractUsersListPresenterState
 import pl.mobite.sample.ca.mvp.ui.components.userslist.state.LoadInitialUsersPageState
+import pl.mobite.sample.ca.mvp.utils.Storage
 import java.io.Serializable
 
 
@@ -19,7 +19,7 @@ class UsersListPresenter(
     var users = listOf<User>()
     var pageMetadata = PageMetadata(INITIAL_PAGE_INDEX, INITIAL_PAGE_INDEX)
 
-        override fun createInitialState() = LoadInitialUsersPageState()
+    override fun createInitialState() = LoadInitialUsersPageState()
 
     override fun saveData(storage: Storage) {
         storage.store(USERS_LIST_KEY, users as? Serializable)

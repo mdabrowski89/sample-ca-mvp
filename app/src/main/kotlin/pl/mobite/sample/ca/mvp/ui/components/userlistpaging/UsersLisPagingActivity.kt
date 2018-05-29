@@ -1,4 +1,4 @@
-package pl.mobite.sample.ca.mvp.ui.components.userslist.withpaginglib
+package pl.mobite.sample.ca.mvp.ui.components.userlistpaging
 
 
 import android.content.Context
@@ -13,13 +13,13 @@ import pl.mobite.sample.ca.mvp.R
 import pl.mobite.sample.ca.mvp.data.local.room.UserEntity
 import pl.mobite.sample.ca.mvp.ui.base.activity.BaseActivity
 
-class UsersListWithPagingLibActivity : BaseActivity() {
+class UsersLisPagingActivity : BaseActivity() {
 
-    private val viewModel: UsersViewModel by lazy {
-        ViewModelProviders.of(this).get(UsersViewModel::class.java)
+    private val viewModel: UsersListPagingViewModel by lazy {
+        ViewModelProviders.of(this).get(UsersListPagingViewModel::class.java)
     }
 
-    private val adapter = UsersAdapter()
+    private val adapter = UsersListPagingAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +38,6 @@ class UsersListWithPagingLibActivity : BaseActivity() {
 
     companion object {
 
-        fun createIntent(context: Context) = Intent(context, UsersListWithPagingLibActivity::class.java)
+        fun createIntent(context: Context) = Intent(context, UsersLisPagingActivity::class.java)
     }
 }

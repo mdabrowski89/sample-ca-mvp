@@ -3,6 +3,7 @@ package pl.mobite.sample.ca.mvp.ui.components.userslist.state
 import org.junit.Before
 import org.junit.Test
 import pl.mobite.sample.ca.mvp.data.models.RepositoryErrorType
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.LoadUsersState
 import pl.mobite.sample.ca.mvp.utils.extensions.*
 
 class DisplayInitialErrorStateTest: AbstractUsersListPresenterStateTest() {
@@ -23,7 +24,7 @@ class DisplayInitialErrorStateTest: AbstractUsersListPresenterStateTest() {
         state.onApplied()
 
         verify(viewMock).showInitialServerError()
-        verifyStateIs<DisplayInitialErrorState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.DisplayInitialErrorState>()
     }
 
     @Test
@@ -34,7 +35,7 @@ class DisplayInitialErrorStateTest: AbstractUsersListPresenterStateTest() {
         state.onApplied()
 
         verify(viewMock).showInitialNetworkError()
-        verifyStateIs<DisplayInitialErrorState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.DisplayInitialErrorState>()
     }
 
     @Test
@@ -44,7 +45,7 @@ class DisplayInitialErrorStateTest: AbstractUsersListPresenterStateTest() {
         state.onRefreshUsers()
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<LoadInitialUsersPageState>()
+        verifyStateIs<LoadUsersState>()
     }
 
     @Test
@@ -54,7 +55,7 @@ class DisplayInitialErrorStateTest: AbstractUsersListPresenterStateTest() {
         state.onUserClicked(createPowerMock())
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<DisplayInitialErrorState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.DisplayInitialErrorState>()
     }
 
     @Test
@@ -64,7 +65,7 @@ class DisplayInitialErrorStateTest: AbstractUsersListPresenterStateTest() {
         state.onLoadNextUsersPage()
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<DisplayInitialErrorState>()
+        verifyStateIs<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.DisplayInitialErrorState>()
     }
 
 }

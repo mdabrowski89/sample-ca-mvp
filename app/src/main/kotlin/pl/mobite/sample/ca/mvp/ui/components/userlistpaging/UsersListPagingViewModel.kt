@@ -1,4 +1,4 @@
-package pl.mobite.sample.ca.mvp.ui.components.userslist.withpaginglib
+package pl.mobite.sample.ca.mvp.ui.components.userlistpaging
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +10,7 @@ import pl.mobite.sample.ca.mvp.data.local.room.UserEntity
 import javax.inject.Inject
 
 
-class UsersViewModel: ViewModel() {
+class UsersListPagingViewModel: ViewModel() {
 
     @Inject lateinit var userDao: UserDao
 

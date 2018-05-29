@@ -5,6 +5,7 @@ import org.junit.Before
 import org.junit.Test
 import org.robolectric.Robolectric
 import pl.mobite.sample.ca.mvp.ui.base.BaseViewTest
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListPresenter
 import pl.mobite.sample.ca.mvp.utils.extensions.assertNotNull
 import pl.mobite.sample.ca.mvp.utils.extensions.whenever
 

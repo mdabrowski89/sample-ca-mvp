@@ -1,4 +1,4 @@
-package pl.mobite.sample.ca.mvp.ui.components.userslist.withpaginglib
+package pl.mobite.sample.ca.mvp.ui.components.userlistpaging
 
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import pl.mobite.sample.ca.mvp.ui.custom.recyclerview.CustomViewHolder
 import pl.mobite.sample.ca.mvp.utils.extensions.inflate
 
 
-class UsersAdapter: PagedListAdapter<UserEntity, UserViewHolder>(
+class UsersListPagingAdapter: PagedListAdapter<UserEntity, UserViewHolder>(
         object : DiffUtil.ItemCallback<UserEntity>() {
             override fun areItemsTheSame(oldItem: UserEntity, newItem: UserEntity)
                 = oldItem.id == newItem.id
