@@ -57,11 +57,14 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
 
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
     // optional - RxJava support for Room
-    implementation "androidx.room:room-rxjava2:$room_version"
+    implementation "androidx.room:room-rxjava2:$roomVersion"
+
+    implementation "androidx.paging:paging-runtime:$pagingVersion"
+    // optional - RxJava support
+    implementation "androidx.paging:paging-rxjava2:$pagingVersion"
 
     // Testing  frameworks and tools
     testImplementation "junit:junit:$junitVersion"

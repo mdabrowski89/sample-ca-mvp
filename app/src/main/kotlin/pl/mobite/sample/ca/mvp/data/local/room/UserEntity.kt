@@ -1,0 +1,39 @@
+package pl.mobite.sample.ca.mvp.data.local.room
+
+import androidx.paging.DataSource
+import androidx.room.*
+
+
+@Entity(tableName = "users")
+data class UserEntity(
+        @PrimaryKey(autoGenerate = true) var id: Long?,
+        @ColumnInfo(name="user_name") var name: String,
+        @ColumnInfo(name="user_age") var age: Int
+) {
+    constructor(): this(null, "", 0)
+}
+
+@Dao
+interface UserDao {
+
+    @Query("SELECT * FROM users")
+    fun getAllAsPaged(): DataSource.Factory<Int, UserEntity>
+
+    @Query("SELECT count(*) FROM users")
+    fun count(): Int
+
+    @Query("SELECT * FROM users")
+    fun getAll(): List<UserEntity>
+
+    @Query("SELECT * FROM users LIMIT :limit OFFSET :offset")
+    fun getRange(offset: Int, limit: Int): List<UserEntity>
+
+    @Insert
+    fun insertAll(users: List<UserEntity>)
+
+    @Delete
+    fun delete(user: UserEntity)
+
+    @Query("DELETE FROM users")
+    fun deleteAll()
+}
