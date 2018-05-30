@@ -3,7 +3,6 @@ package pl.mobite.sample.ca.mvp.ui.components.userslist.state
 import io.reactivex.disposables.Disposable
 import pl.mobite.sample.ca.mvp.data.models.Page
 import pl.mobite.sample.ca.mvp.data.models.PageMetadata
-import pl.mobite.sample.ca.mvp.data.models.RepositoryErrorType
 import pl.mobite.sample.ca.mvp.data.models.User
 import java.io.Serializable
 
@@ -29,15 +28,11 @@ class LoadUsersPageState(
                     .subscribe(
                     /** onSuccess */
                     { newPage: Page<User> ->
-                        if (newPage.metadata.isValid) {
-                            setNewState(MergeUsersPageState(newPage))
-                        } else {
-                            setNewState(DisplayErrorState(RepositoryErrorType.SERVER))
-                        }
+                        setNewState(MergeUsersPageState(newPage))
                     },
                     /** onError */
                     { _: Throwable? ->
-                        setNewState(DisplayErrorState(RepositoryErrorType.NETWORK))
+                        setNewState(DisplayErrorState())
                     }
             )
         }

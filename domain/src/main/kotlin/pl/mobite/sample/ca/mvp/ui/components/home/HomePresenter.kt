@@ -8,4 +8,8 @@ class HomePresenter(view: HomeView): Presenter<HomeView>(view) {
     fun onShowUsersClicked() {
         view.showUsersList()
     }
+
+    fun onShowUsersWithPagingClicked() {
+        view.showUsersListPaging()
+    }
 }

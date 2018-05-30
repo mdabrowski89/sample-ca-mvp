@@ -10,13 +10,12 @@ import pl.mobite.sample.ca.mvp.R
 import pl.mobite.sample.ca.mvp.data.models.User
 import pl.mobite.sample.ca.mvp.data.repositories.UsersRepository
 import pl.mobite.sample.ca.mvp.ui.base.activity.BasePresenterActivity
-import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListView
 import pl.mobite.sample.ca.mvp.utils.Baker
 import pl.mobite.sample.ca.mvp.utils.extensions.appComponent
 import pl.mobite.sample.ca.mvp.utils.extensions.visible
 import javax.inject.Inject
 
-class UsersListActivity : BasePresenterActivity<pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListPresenter>(), UsersListView {
+class UsersListActivity : BasePresenterActivity<UsersListPresenter>(), UsersListView {
 
     @Inject lateinit var usersRepository: UsersRepository
 
@@ -67,12 +66,8 @@ class UsersListActivity : BasePresenterActivity<pl.mobite.sample.ca.mvp.ui.compo
         usersView.setItems(users, hasMore)
     }
 
-    override fun showInitialNetworkError() {
-        renderView(showNetworkErrorText = true)
-    }
-
-    override fun showInitialServerError() {
-        renderView(showServerErrorText = true)
+    override fun showInitialError() {
+        renderView(showErrorText = true)
     }
 
     override fun showRefreshIndicator() {
@@ -85,12 +80,8 @@ class UsersListActivity : BasePresenterActivity<pl.mobite.sample.ca.mvp.ui.compo
         Baker.toast("not implemented")
     }
 
-    override fun showServerError() {
-        showDialog(R.string.users_error_dialog_title, R.string.users_error_server_message)
-    }
-
-    override fun showNetworkError() {
-        showDialog(R.string.users_error_dialog_title, R.string.users_error_network_message)
+    override fun showError() {
+        showDialog(R.string.users_error_dialog_title, R.string.users_error_message)
     }
 
     private fun showDialog(titleRes: Int, messageRes: Int) {
@@ -104,12 +95,10 @@ class UsersListActivity : BasePresenterActivity<pl.mobite.sample.ca.mvp.ui.compo
 
     private fun renderView(
             showUsersView: Boolean = false,
-            showServerErrorText: Boolean = false,
-            showNetworkErrorText: Boolean = false) {
+            showErrorText: Boolean = false) {
         usersView.visible(showUsersView)
-        errorView.visible(showServerErrorText || showNetworkErrorText)
-        if (showServerErrorText) errorMessageText.setText(R.string.users_error_server_message)
-        if (showNetworkErrorText) errorMessageText.setText(R.string.users_error_network_message)
+        errorView.visible(showErrorText)
+        if (showErrorText) errorMessageText.setText(R.string.users_error_message)
     }
 
     companion object {

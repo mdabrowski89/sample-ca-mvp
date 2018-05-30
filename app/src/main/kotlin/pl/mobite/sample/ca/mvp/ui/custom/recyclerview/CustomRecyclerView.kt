@@ -13,7 +13,14 @@ import pl.mobite.sample.ca.mvp.R
 import pl.mobite.sample.ca.mvp.utils.extensions.inflate
 import pl.mobite.sample.ca.mvp.utils.extensions.visible
 
-
+/**
+ * RecyclerView inside FrameView with some additional features.
+ * It can handle out of the box:
+ * - default/custom loading view
+ * - default/custom empty view
+ * - click on empty view
+ * - swipe to refresh
+ */
 abstract class CustomRecyclerView<in T, out A: RecyclerView.Adapter<*>> @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,
@@ -24,6 +31,7 @@ abstract class CustomRecyclerView<in T, out A: RecyclerView.Adapter<*>> @JvmOver
     var onSwipedToRefreshListener: (() -> Unit)? = null
 
     var emptyView: View? = null
+    var loadingView: View? = null
 
     protected val adapter by lazy { createAdapter() }
 
@@ -33,12 +41,18 @@ abstract class CustomRecyclerView<in T, out A: RecyclerView.Adapter<*>> @JvmOver
         recyclerView.adapter = adapter
         swipeRefreshLayout.setOnRefreshListener { onSwipedToRefreshListener?.invoke() }
         getEmptyViewLayoutRes()?.let { layoutRes -> setEmptyView(layoutRes) }
+        getLoadingViewLayoutRes()?.let { layoutRes -> setLoadingView(layoutRes) }
     }
 
     open fun setEmptyView(@LayoutRes layoutRes: Int) {
         emptyViewStub.layoutResource = layoutRes
         emptyView = emptyViewStub.inflate()
         emptyView?.setOnClickListener { onEmptyViewClickedListener?.invoke() }
+    }
+
+    open fun setLoadingView(@LayoutRes layoutRes: Int) {
+        loadingViewStub.layoutResource = layoutRes
+        loadingView = loadingViewStub.inflate()
     }
 
     open fun setItems(items: List<T>) {
@@ -54,8 +68,6 @@ abstract class CustomRecyclerView<in T, out A: RecyclerView.Adapter<*>> @JvmOver
         renderView(showLoadingIndicator = true)
     }
 
-    abstract fun getEmptyViewLayoutRes(): Int?
-
     protected open fun renderView(
             showRecyclerView: Boolean = false,
             showEmptyView: Boolean = false,
@@ -63,7 +75,7 @@ abstract class CustomRecyclerView<in T, out A: RecyclerView.Adapter<*>> @JvmOver
             showRefreshIndicator: Boolean = false) {
         swipeRefreshLayout.visible(showRecyclerView)
         emptyView?.visible(showEmptyView)
-        progressBar.visible(showLoadingIndicator)
+        loadingView?.visible(showLoadingIndicator)
         swipeRefreshLayout.isRefreshing = showRefreshIndicator
     }
 
@@ -73,8 +85,12 @@ abstract class CustomRecyclerView<in T, out A: RecyclerView.Adapter<*>> @JvmOver
 
     fun getSwipeRefreshLayout(): SwipeRefreshLayout = swipeRefreshLayout
 
-    abstract fun createAdapter(): A
+    protected open fun getEmptyViewLayoutRes(): Int? = R.layout.custom_recycler_view_empty
+
+    protected open fun getLoadingViewLayoutRes(): Int? = R.layout.custom_recycler_view_loading
 
     protected abstract fun setItemsToAdapter(items: List<T>)
+
+    abstract fun createAdapter(): A
 }
 

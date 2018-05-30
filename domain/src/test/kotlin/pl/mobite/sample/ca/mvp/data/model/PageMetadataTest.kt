@@ -19,7 +19,6 @@ class PageMetadataTest {
         assertTrue(!testedPage.isInitialPage)
         assertTrue(testedPage.isFirst)
         assertTrue(!testedPage.isLast)
-        assertTrue(testedPage.isValid)
         assertTrue(testedPage.nextIndex == 1)
     }
 
@@ -29,7 +28,6 @@ class PageMetadataTest {
         assertTrue(!testedPage.isInitialPage)
         assertTrue(testedPage.isFirst)
         assertTrue(testedPage.isLast)
-        assertTrue(testedPage.isValid)
     }
 
     @Test
@@ -38,7 +36,6 @@ class PageMetadataTest {
         assertTrue(!testedPage.isInitialPage)
         assertTrue(!testedPage.isFirst)
         assertTrue(!testedPage.isLast)
-        assertTrue(testedPage.isValid)
         assertTrue(testedPage.nextIndex == 3)
     }
 
@@ -48,24 +45,5 @@ class PageMetadataTest {
         assertTrue(!testedPage.isInitialPage)
         assertTrue(!testedPage.isFirst)
         assertTrue(testedPage.isLast)
-        assertTrue(testedPage.isValid)
-    }
-
-    @Test
-    fun testInvalidPages() {
-        val testedPage1 = PageMetadata(-1, 6)
-        val testedPage2 = PageMetadata(-1, -10)
-        val testedPage3 = PageMetadata(-1, 0)
-        val testedPage4 = PageMetadata(0, -2)
-        val testedPage5 = PageMetadata(5, 2)
-        val testedPage6 = PageMetadata(5, 0)
-        val testedPage7 = PageMetadata(5, -2)
-        assertTrue(!testedPage1.isValid)
-        assertTrue(!testedPage2.isValid)
-        assertTrue(!testedPage3.isValid)
-        assertTrue(!testedPage4.isValid)
-        assertTrue(!testedPage5.isValid)
-        assertTrue(!testedPage6.isValid)
-        assertTrue(!testedPage7.isValid)
     }
 }

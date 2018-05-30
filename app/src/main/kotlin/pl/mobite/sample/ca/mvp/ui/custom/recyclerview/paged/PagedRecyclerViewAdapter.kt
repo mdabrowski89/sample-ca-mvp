@@ -1,55 +1,36 @@
 package pl.mobite.sample.ca.mvp.ui.custom.recyclerview.paged
 
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import pl.mobite.sample.ca.mvp.R
-import pl.mobite.sample.ca.mvp.ui.custom.recyclerview.CustomViewHolder
-import pl.mobite.sample.ca.mvp.utils.extensions.inflate
-import java.util.concurrent.atomic.AtomicBoolean
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 
-
-abstract class PagedRecyclerViewAdapter<T>: RecyclerView.Adapter<CustomViewHolder<T>>() {
+/**
+ * PagedListAdapter with paging (Paging lib from Android Architecture Components).
+ * It can handle out of the box:
+ * - click on item
+ * - click on placeholder
+ *
+ * You must provide subclass of PagedViewHolder as its ViewHolder.
+ * It is used by PagedRecyclerViewAdapter.
+ */
+abstract class PagedRecyclerViewAdapter<T>(diffCallback: DiffUtil.ItemCallback<T>)
+    : PagedListAdapter<T, PagedViewHolder<T>>(diffCallback) {
 
     var onItemClickedListener: ((T) -> Unit)? = null
+    var onPlaceholderClickedListener: (() -> Unit)? = null
 
-    val hasMoreItems = AtomicBoolean(false)
+    final override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagedViewHolder<T> {
+        return getViewHolder(parent, viewType)
+    }
 
-    private val VIEW_TYPE_ITEM = 0
-    private val VIEW_TYPE_PROGRESS = Int.MAX_VALUE
-
-    private var items = listOf<T>()
-
-    final override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder<T> {
-        return when(viewType) {
-            VIEW_TYPE_PROGRESS -> object: ProgressViewHolder<T>(parent.inflate(R.layout.custom_item_progress)) {}
-            else -> getViewHolder(parent, viewType)
+    final override fun onBindViewHolder(holder: PagedViewHolder<T>, position: Int) {
+        val item: T? = getItem(position)
+        if (item == null) {
+            holder.bindPlaceholder(onPlaceholderClickedListener)
+        } else {
+            holder.bind(item, onItemClickedListener)
         }
     }
 
-    final override fun onBindViewHolder(holder: CustomViewHolder<T>, position: Int) {
-        if(holder.itemViewType == VIEW_TYPE_ITEM) {
-            holder.bind(items[position], onItemClickedListener)
-        }
-    }
-
-    final override fun getItemCount()
-            = if (hasMoreItems.get()) items.size + 1 else items.size
-
-    override fun getItemViewType(position: Int): Int
-            = if (!hasMoreItems.get() || position <= items.lastIndex) VIEW_TYPE_ITEM else VIEW_TYPE_PROGRESS
-
-    abstract fun getViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder<T>
-
-    fun setItems(items: List<T>, hasMore: Boolean) {
-        this.items = items
-        this.hasMoreItems.set(hasMore)
-        notifyDataSetChanged()
-    }
-
-    abstract class ProgressViewHolder<T>(itemView: android.view.View) : CustomViewHolder<T>(itemView) {
-
-        override fun bind(item: T) {
-            // do nothing
-        }
-    }
+    abstract fun getViewHolder(parent: ViewGroup, viewType: Int): PagedViewHolder<T>
 }

@@ -2,8 +2,6 @@ package pl.mobite.sample.ca.mvp.ui.components.userslist.state
 
 import org.junit.Before
 import org.junit.Test
-import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.LoadUsersState
-import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.LoadUsersPageState
 import pl.mobite.sample.ca.mvp.utils.extensions.createPowerMock
 import pl.mobite.sample.ca.mvp.utils.extensions.verifyZeroInteractions
 
@@ -16,7 +14,7 @@ class LoadInitialUsersPageStateTest: AbstractUsersListPresenterStateTest() {
     }
     @Test
     fun onApplied() {
-        state = LoadUsersState()
+        state = LoadInitialUsersPageState()
 
         state.onApplied()
 
@@ -26,32 +24,32 @@ class LoadInitialUsersPageStateTest: AbstractUsersListPresenterStateTest() {
 
     @Test
     fun onUserClicked() {
-        state = LoadUsersState()
+        state = LoadInitialUsersPageState()
 
         state.onUserClicked(createPowerMock())
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<LoadUsersState>()
+        verifyStateIs<LoadInitialUsersPageState>()
     }
 
     @Test
     fun onRefreshUsers() {
-        state = LoadUsersState()
+        state = LoadInitialUsersPageState()
 
         state.onRefreshUsers()
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<LoadUsersState>()
+        verifyStateIs<LoadInitialUsersPageState>()
     }
 
     @Test
     fun onLoadNextUsersPage() {
-        state = LoadUsersState()
+        state = LoadInitialUsersPageState()
 
         state.onLoadNextUsersPage()
 
         verifyZeroInteractions(viewMock)
-        verifyStateIs<LoadUsersState>()
+        verifyStateIs<LoadInitialUsersPageState>()
     }
 
 }

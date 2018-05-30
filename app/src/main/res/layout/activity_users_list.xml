@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <pl.mobite.sample.ca.mvp.ui.components.userslist.UsersRecyclerView
+    <pl.mobite.sample.ca.mvp.ui.components.userslist.UsersListRecyclerView
         android:id="@+id/usersView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

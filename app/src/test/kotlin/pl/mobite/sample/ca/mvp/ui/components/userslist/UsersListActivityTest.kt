@@ -5,16 +5,16 @@ import org.junit.Before
 import org.junit.Test
 import org.robolectric.Robolectric
 import pl.mobite.sample.ca.mvp.ui.base.BaseViewTest
-import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListPresenter
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListPagingPresenter
 import pl.mobite.sample.ca.mvp.utils.extensions.assertNotNull
 import pl.mobite.sample.ca.mvp.utils.extensions.whenever
 
 
-class UsersListActivityTest: BaseViewTest<UsersListActivity, UsersListPresenter>() {
+class UsersListActivityTest: BaseViewTest<UsersListActivity, UsersListPagingPresenter>() {
 
     @Before
     fun setUp() {
-        init<UsersListPresenter>()
+        init<UsersListPagingPresenter>()
         view = Robolectric.setupActivity(UsersListActivity::class.java)
         view.presenter = presenterMock
         whenever(presenterMock.view).thenReturn(view)

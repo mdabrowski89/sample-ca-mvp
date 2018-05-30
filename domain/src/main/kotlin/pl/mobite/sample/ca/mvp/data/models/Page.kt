@@ -15,8 +15,6 @@ data class PageMetadata(val index: Int, private val pageNumbers: Int): Serializa
 
     val isLast = index == lastPageIndex
 
-    val isValid = index in FIRST_PAGE_INDEX.. lastPageIndex
-
     val nextIndex = index + 1
 
     companion object {

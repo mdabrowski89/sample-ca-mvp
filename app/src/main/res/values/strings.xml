@@ -4,13 +4,16 @@
     <string name="ok">OK</string>
     <string name="tap_to_refresh_info">(tap to refresh)</string>
 
+    <string name="custom_empty_view_message">no content</string>
+
     <string name="main_show_users">Show Users List</string>
     <string name="main_show_users_with_paging">Show Users List with Paging lib</string>
     <string name="main_generate_users">Generate users</string>
 
-    <string name="users_list_title">Users list</string>
+    <string name="users_list_title">Users - custom paging</string>
     <string name="users_error_dialog_title">Upsss…</string>
-    <string name="users_error_network_message">Unable to download users. Network error occurred.</string>
-    <string name="users_error_server_message">Unable to download users. Server error occurred.</string>
+    <string name="users_error_message">Unable to load users.</string>
     <string name="users_empty_view_title">Users not found</string>
+
+    <string name="users_list_paging_title">Users - Paging lib</string>
 </resources>
