@@ -10,17 +10,13 @@ interface UsersListView: View {
 
     fun showUsers(users: List<User>, hasMore: Boolean)
 
-    fun showInitialNetworkError()
-
-    fun showInitialServerError()
+    fun showInitialError()
 
     fun showRefreshIndicator()
 
     fun showUserDetails(user: User)
 
-    fun showNetworkError()
-
-    fun showServerError()
+    fun showError()
 
 }
 

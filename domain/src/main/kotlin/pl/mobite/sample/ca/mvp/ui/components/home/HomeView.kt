@@ -6,4 +6,6 @@ import pl.mobite.sample.ca.mvp.ui.base.View
 interface HomeView: View {
 
     fun showUsersList()
+
+    fun showUsersListPaging()
 }

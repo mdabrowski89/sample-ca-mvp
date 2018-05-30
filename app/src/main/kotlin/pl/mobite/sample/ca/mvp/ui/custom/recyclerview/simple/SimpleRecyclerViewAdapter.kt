@@ -5,6 +5,14 @@ import androidx.recyclerview.widget.RecyclerView
 import pl.mobite.sample.ca.mvp.ui.custom.recyclerview.CustomViewHolder
 
 
+/**
+ * RecyclerViewAdapter with some additional features.
+ * It can handle out of the box:
+ * - click on item
+ *
+ * You must provide subclass of CustomViewHolder as its ViewHolder.
+ * It is used by SimpleRecyclerView.
+ */
 abstract class SimpleRecyclerViewAdapter<T>: RecyclerView.Adapter<CustomViewHolder<T>>() {
 
     var onItemClickedListener: ((T) -> Unit)? = null

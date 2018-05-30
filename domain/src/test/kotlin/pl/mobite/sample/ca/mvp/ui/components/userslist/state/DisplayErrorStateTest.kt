@@ -3,13 +3,11 @@ package pl.mobite.sample.ca.mvp.ui.components.userslist.state
 import org.junit.Before
 import org.junit.Test
 import pl.mobite.sample.ca.mvp.data.models.PageMetadata
-import pl.mobite.sample.ca.mvp.data.models.RepositoryErrorType
 import pl.mobite.sample.ca.mvp.utils.extensions.*
 
 
 class DisplayErrorStateTest: AbstractUsersListPresenterStateTest() {
 
-    private val errorTypeMock: RepositoryErrorType by lazyPowerMock()
     private val pageMetadataMock: PageMetadata by lazyPowerMock()
 
     @Before
@@ -23,7 +21,7 @@ class DisplayErrorStateTest: AbstractUsersListPresenterStateTest() {
     @Test
     fun onApplied_onInitialPage() {
         whenever(pageMetadataMock.isInitialPage).thenReturn(true)
-        state = DisplayErrorState(errorTypeMock)
+        state = DisplayErrorState()
 
         state.onApplied()
 
@@ -32,30 +30,18 @@ class DisplayErrorStateTest: AbstractUsersListPresenterStateTest() {
     }
 
     @Test
-    fun onApplied_onNetworkError() {
-        setUpEnumMock(errorTypeMock, RepositoryErrorType.NETWORK)
-        state = DisplayErrorState(errorTypeMock)
+    fun onApplied_onError() {
+        state = DisplayErrorState()
 
         state.onApplied()
 
-        verify(viewMock).showNetworkError()
-        verifyStateIs<PresentUsersState>()
-    }
-
-    @Test
-    fun onApplied_onServerError() {
-        setUpEnumMock(errorTypeMock, RepositoryErrorType.SERVER)
-        state = DisplayErrorState(errorTypeMock)
-
-        state.onApplied()
-
-        verify(viewMock).showServerError()
+        verify(viewMock).showError()
         verifyStateIs<PresentUsersState>()
     }
 
     @Test
     fun onUserClicked() {
-        state = DisplayErrorState(errorTypeMock)
+        state = DisplayErrorState()
 
         state.onUserClicked(createPowerMock())
 
@@ -65,7 +51,7 @@ class DisplayErrorStateTest: AbstractUsersListPresenterStateTest() {
 
     @Test
     fun onRefreshUsers() {
-        state = DisplayErrorState(errorTypeMock)
+        state = DisplayErrorState()
 
         state.onRefreshUsers()
 
@@ -75,7 +61,7 @@ class DisplayErrorStateTest: AbstractUsersListPresenterStateTest() {
 
     @Test
     fun onLoadNextUsersPage() {
-        state = DisplayErrorState(errorTypeMock)
+        state = DisplayErrorState()
 
         state.onLoadNextUsersPage()
 

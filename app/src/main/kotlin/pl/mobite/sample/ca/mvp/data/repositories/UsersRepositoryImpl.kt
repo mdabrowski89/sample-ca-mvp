@@ -9,7 +9,6 @@ import pl.mobite.sample.ca.mvp.data.local.room.toUser
 import pl.mobite.sample.ca.mvp.data.models.Page
 import pl.mobite.sample.ca.mvp.data.models.PageMetadata
 import pl.mobite.sample.ca.mvp.data.models.User
-import java.util.concurrent.TimeUnit
 
 class UsersRepositoryImpl(private val userDao: UserDao) : UsersRepository {
 
@@ -27,7 +26,6 @@ class UsersRepositoryImpl(private val userDao: UserDao) : UsersRepository {
                     }
                     Page(data, PageMetadata(index, pageNumber))
                 }
-                .delay(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }

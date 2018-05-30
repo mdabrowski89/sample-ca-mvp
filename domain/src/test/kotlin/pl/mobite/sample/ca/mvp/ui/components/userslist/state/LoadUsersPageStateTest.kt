@@ -5,7 +5,6 @@ import org.junit.Before
 import org.junit.Test
 import pl.mobite.sample.ca.mvp.data.models.Page
 import pl.mobite.sample.ca.mvp.data.models.PageMetadata
-import pl.mobite.sample.ca.mvp.data.models.RepositoryErrorType
 import pl.mobite.sample.ca.mvp.data.models.User
 import pl.mobite.sample.ca.mvp.data.repositories.UsersRepository
 import pl.mobite.sample.ca.mvp.utils.extensions.*
@@ -89,7 +88,6 @@ class LoadUsersPageStateTest: AbstractUsersListPresenterStateTest() {
     @Test
     fun onApplied_onSuccess() {
         whenever(repositoryMock.getUsersPage(any())).thenReturn(Single.just(newPageMock))
-        whenever(newPageMetadataMock.isValid).thenReturn(true)
         state = LoadUsersPageState(pageToLoadMock)
 
         state.onApplied()
@@ -98,26 +96,13 @@ class LoadUsersPageStateTest: AbstractUsersListPresenterStateTest() {
     }
 
     @Test
-    fun onApplied_onServerError() {
-        whenever(repositoryMock.getUsersPage(any())).thenReturn(Single.just(newPageMock))
-        whenever(newPageMetadataMock.isValid).thenReturn(false)
-        state = LoadUsersPageState(pageToLoadMock)
-
-        state.onApplied()
-
-        verifyStateIs<DisplayErrorState>()
-        assertTrue((state as DisplayErrorState).repositoryErrorType == RepositoryErrorType.SERVER)
-    }
-
-    @Test
-    fun onApplied_onNetworkError() {
+    fun onApplied_onError() {
         whenever(repositoryMock.getUsersPage(any())).thenReturn(Single.error(Exception()))
         state = LoadUsersPageState(pageToLoadMock)
 
         state.onApplied()
 
         verifyStateIs<DisplayErrorState>()
-        assertTrue((state as DisplayErrorState).repositoryErrorType == RepositoryErrorType.NETWORK)
     }
 
     @Test

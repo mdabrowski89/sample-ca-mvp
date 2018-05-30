@@ -66,12 +66,8 @@ class UsersListActivity : BasePresenterActivity<UsersListPresenter>(), UsersList
         usersView.setItems(users, hasMore)
     }
 
-    override fun showInitialNetworkError() {
-        renderView(showNetworkErrorText = true)
-    }
-
-    override fun showInitialServerError() {
-        renderView(showServerErrorText = true)
+    override fun showInitialError() {
+        renderView(showErrorText = true)
     }
 
     override fun showRefreshIndicator() {
@@ -84,12 +80,8 @@ class UsersListActivity : BasePresenterActivity<UsersListPresenter>(), UsersList
         Baker.toast("not implemented")
     }
 
-    override fun showServerError() {
-        showDialog(R.string.users_error_dialog_title, R.string.users_error_server_message)
-    }
-
-    override fun showNetworkError() {
-        showDialog(R.string.users_error_dialog_title, R.string.users_error_network_message)
+    override fun showError() {
+        showDialog(R.string.users_error_dialog_title, R.string.users_error_message)
     }
 
     private fun showDialog(titleRes: Int, messageRes: Int) {
@@ -103,12 +95,10 @@ class UsersListActivity : BasePresenterActivity<UsersListPresenter>(), UsersList
 
     private fun renderView(
             showUsersView: Boolean = false,
-            showServerErrorText: Boolean = false,
-            showNetworkErrorText: Boolean = false) {
+            showErrorText: Boolean = false) {
         usersView.visible(showUsersView)
-        errorView.visible(showServerErrorText || showNetworkErrorText)
-        if (showServerErrorText) errorMessageText.setText(R.string.users_error_server_message)
-        if (showNetworkErrorText) errorMessageText.setText(R.string.users_error_network_message)
+        errorView.visible(showErrorText)
+        if (showErrorText) errorMessageText.setText(R.string.users_error_message)
     }
 
     companion object {

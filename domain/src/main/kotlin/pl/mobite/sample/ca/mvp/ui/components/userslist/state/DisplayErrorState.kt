@@ -1,24 +1,17 @@
 package pl.mobite.sample.ca.mvp.ui.components.userslist.state
 
-import pl.mobite.sample.ca.mvp.data.models.RepositoryErrorType
 
-
-class DisplayErrorState(
-        val repositoryErrorType: RepositoryErrorType
-): AbstractUsersListPresenterState() {
+class DisplayErrorState: AbstractUsersListPresenterState() {
 
     override fun onApplied() {
         with(presenter) {
             /** If error occurred when data are loaded for the first time show full screen error
              *  If error occurred when data are refreshed or next page is loaded, show different error (dialog or toast) */
             if (pageMetadata.isInitialPage) {
-                setNewState(DisplayInitialErrorState(repositoryErrorType))
+                setNewState(DisplayInitialErrorState())
                 return
             }
-            when (repositoryErrorType) {
-                RepositoryErrorType.NETWORK -> view.showNetworkError()
-                RepositoryErrorType.SERVER -> view.showServerError()
-            }
+            view.showError()
             setNewState(PresentUsersState())
         }
     }

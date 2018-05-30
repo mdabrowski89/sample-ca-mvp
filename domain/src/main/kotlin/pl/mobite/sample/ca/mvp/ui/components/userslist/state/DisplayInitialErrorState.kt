@@ -1,18 +1,11 @@
 package pl.mobite.sample.ca.mvp.ui.components.userslist.state
 
-import pl.mobite.sample.ca.mvp.data.models.RepositoryErrorType
 
-
-class DisplayInitialErrorState(
-        private val repositoryErrorType: RepositoryErrorType
-): AbstractUsersListPresenterState() {
+class DisplayInitialErrorState: AbstractUsersListPresenterState() {
 
     override fun onApplied() {
         with(presenter) {
-            when (repositoryErrorType) {
-                RepositoryErrorType.NETWORK -> view.showInitialNetworkError()
-                RepositoryErrorType.SERVER -> view.showInitialServerError()
-            }
+            view.showInitialError()
         }
     }
 
@@ -22,6 +15,6 @@ class DisplayInitialErrorState(
         }
     }
 
-    override fun createSavableInstance() = DisplayInitialErrorState(repositoryErrorType)
+    override fun createSavableInstance() = DisplayInitialErrorState()
 
 }

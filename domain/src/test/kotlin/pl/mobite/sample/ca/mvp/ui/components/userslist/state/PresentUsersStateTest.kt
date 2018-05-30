@@ -16,7 +16,7 @@ class PresentUsersStateTest: AbstractUsersListPresenterStateTest() {
     @Before
     override fun setUp() {
         super.setUp()
-        // nothing to set up
+
         whenever(presenterMock.users).thenReturn(usersList)
         whenever(presenterMock.pageMetadata).thenReturn(pageMetadataMock)
         whenever(pageMetadataMock.isLast).thenReturn(false)

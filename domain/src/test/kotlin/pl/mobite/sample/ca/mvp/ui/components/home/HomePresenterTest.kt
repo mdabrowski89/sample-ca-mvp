@@ -20,4 +20,11 @@ class HomePresenterTest: BasePresenterTest<HomePresenter, HomeView>() {
         verify(viewMock).showUsersList()
     }
 
+    @Test
+    fun onShowUsersWithPagingClicked() {
+        presenter.onShowUsersWithPagingClicked()
+
+        verify(viewMock).showUsersListPaging()
+    }
+
 }
