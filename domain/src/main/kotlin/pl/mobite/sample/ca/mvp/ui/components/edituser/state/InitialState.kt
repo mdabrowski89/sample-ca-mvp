@@ -1,12 +1,13 @@
 package pl.mobite.sample.ca.mvp.ui.components.edituser.state
 
 
-class InitialState(): AbstractEditUserPresenterState() {
+class InitialState: AbstractEditUserPresenterState() {
 
     override fun onApplied() {
         with(presenter) {
             if (userId == null) {
-                setNewState(PresentNewUserFormState())
+                view.showNewUserForm()
+                setNewState(NewUserFormState())
             } else {
                 setNewState(LoadUserState(userId))
             }

@@ -8,11 +8,32 @@ interface EditUserView: View {
 
     fun showLoadIndicator()
 
-    fun showUpdateUserForm(user: User)
+    fun showUserForm(user: User)
 
-    fun showNewUserForm(user: User)
+    fun showNewUserForm()
 
-    fun showSaveIndicator()
+    fun showCreateIndicator()
 
-    fun showSaveError()
+    fun showUpdateIndicator()
+
+    fun showDeleteIndicator()
+
+
+    fun showCreateSuccess()
+
+    fun showUpdateSuccess()
+
+    fun showDeleteSuccess()
+
+    fun showCreateError()
+
+    fun showUpdateError()
+
+    fun showDeleteError()
+
+    fun showInvalidUserData()
+
+    fun showAppError()
+
+    fun close()
 }

@@ -1,9 +1,11 @@
 package pl.mobite.sample.ca.mvp.ui.components.edituser
 
 import pl.mobite.sample.ca.mvp.data.models.User
+import pl.mobite.sample.ca.mvp.data.models.UserFormData
 import pl.mobite.sample.ca.mvp.data.repositories.UsersRepository
 import pl.mobite.sample.ca.mvp.ui.base.StatablePresenter
 import pl.mobite.sample.ca.mvp.ui.components.edituser.state.AbstractEditUserPresenterState
+import pl.mobite.sample.ca.mvp.ui.components.edituser.state.InitialState
 import pl.mobite.sample.ca.mvp.utils.Storage
 
 
@@ -15,9 +17,7 @@ class EditUserPresenter(
 
     var user: User? = null
 
-    override fun createInitialState(): AbstractEditUserPresenterState {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun createInitialState() = InitialState()
 
     override fun saveData(storage: Storage) {
         super.saveData(storage)
@@ -29,12 +29,16 @@ class EditUserPresenter(
         user = storage.restoreSerializable(USER_KEY) as User
     }
 
-    fun onUpdateUser(user: User) {
-        state?.onUpdateUser(user)
+    fun onUpdateUser(userFormData: UserFormData) {
+        state?.onUpdateUser(userFormData)
     }
 
-    fun onCreateUser(user: User) {
-        state?.onCreateUser(user)
+    fun onCreateUser(userFormData: UserFormData) {
+        state?.onCreateUser(userFormData)
+    }
+
+    fun onDeleteUser() {
+        state?.onDeleteUser()
     }
 
     companion object {
