@@ -15,7 +15,10 @@ data class UserEntity(
 }
 
 fun UserEntity.toUser() =
-    User(this.id, this.name, this.age)
+        User(this.id, this.name, this.age)
+
+fun User.toUserEntity() =
+        UserEntity(this.id, this.name, this.age)
 
 @Dao
 interface UserDao {
@@ -32,8 +35,20 @@ interface UserDao {
     @Query("SELECT * FROM users LIMIT :limit OFFSET :offset")
     fun getRange(offset: Int, limit: Int): List<UserEntity>
 
+    @Query("SELECT * FROM users where id=:id")
+    fun get(userId: Long): UserEntity
+
+    @Insert
+    fun insert(user: UserEntity)
+
     @Insert
     fun insertAll(users: List<UserEntity>)
+
+    @Update
+    fun update(user: UserEntity)
+
+    @Update
+    fun updateAll(users: List<UserEntity>)
 
     @Delete
     fun delete(user: UserEntity)
