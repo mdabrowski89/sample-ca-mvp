@@ -11,7 +11,7 @@ interface UsersRepository {
 
     fun getUsersPage(index: Int): Single<Page<User>>
 
-    fun getUser(): Single<User>
+    fun getUser(userId: Long): Single<User>
 
     fun createUser(user: User): Completable
 

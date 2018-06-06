@@ -4,25 +4,27 @@ import io.reactivex.disposables.Disposable
 import pl.mobite.sample.ca.mvp.data.models.User
 
 
-class LoadUserState(private val userId: Long): AbstractEditUserPresenterState() {
+class LoadUserState: AbstractEditUserPresenterState() {
 
     private var disposable: Disposable? = null
 
     override fun onApplied() {
         with(presenter) {
-            view.showLoadIndicator()
-            disposable = usersRepository.getUser().subscribe(
-                    /** onSuccess */
-                    { user: User ->
-                        this.user = user
-                        view.showUserForm(user)
-                        setNewState(EditUserFormState())
-                    },
-                    /** onError */
-                    { _: Throwable? ->
-                        setNewState(ShowErrorAndCloseState())
-                    }
-            )
+            userId?.let {
+                view.showLoadIndicator()
+                disposable = usersRepository.getUser(it).subscribe(
+                        /** onSuccess */
+                        { user: User ->
+                            this.user = user
+                            view.showUserForm(user)
+                            setNewState(EditUserFormState())
+                        },
+                        /** onError */
+                        { _: Throwable? ->
+                            setNewState(ShowErrorAndCloseState())
+                        }
+                )
+            } ?: setNewState(ShowErrorAndCloseState())
         }
     }
 
@@ -30,5 +32,5 @@ class LoadUserState(private val userId: Long): AbstractEditUserPresenterState() 
         disposable?.dispose()
     }
 
-    override fun createSavableInstance() = LoadUserState(userId)
+    override fun createSavableInstance() = LoadUserState()
 }

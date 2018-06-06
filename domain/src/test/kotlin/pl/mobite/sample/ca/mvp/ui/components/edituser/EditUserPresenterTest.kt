@@ -7,7 +7,6 @@ import pl.mobite.sample.ca.mvp.data.models.UserFormData
 import pl.mobite.sample.ca.mvp.data.repositories.UsersRepository
 import pl.mobite.sample.ca.mvp.ui.base.BasePresenterTest
 import pl.mobite.sample.ca.mvp.ui.components.edituser.state.AbstractEditUserPresenterState
-import pl.mobite.sample.ca.mvp.ui.components.userslist.UsersListView
 import pl.mobite.sample.ca.mvp.utils.extensions.createPowerMock
 import pl.mobite.sample.ca.mvp.utils.extensions.lazyPowerMock
 import pl.mobite.sample.ca.mvp.utils.extensions.verify
@@ -20,7 +19,7 @@ class EditUserPresenterTest : BasePresenterTest<EditUserPresenter, EditUserView>
 
     @Before
     fun setUp() {
-        init<UsersListView>()
+        init<EditUserView>()
         presenter = EditUserPresenter(viewMock, null, usersRepositoryMock)
         presenter.setNewState(stateMock)
     }

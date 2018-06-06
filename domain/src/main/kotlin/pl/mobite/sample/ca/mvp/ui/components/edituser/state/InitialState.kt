@@ -9,7 +9,7 @@ class InitialState: AbstractEditUserPresenterState() {
                 view.showNewUserForm()
                 setNewState(NewUserFormState())
             } else {
-                setNewState(LoadUserState(userId))
+                setNewState(LoadUserState())
             }
         }
     }
