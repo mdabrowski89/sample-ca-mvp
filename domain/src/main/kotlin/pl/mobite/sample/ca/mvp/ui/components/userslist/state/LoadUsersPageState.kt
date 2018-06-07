@@ -48,6 +48,12 @@ class LoadUsersPageState(
         }
     }
 
+    override fun onAddUserClicked() {
+        with(presenter) {
+            view.showNewUserForm()
+        }
+    }
+
     override fun onLeft(finished: Boolean) {
         disposable?.dispose()
     }

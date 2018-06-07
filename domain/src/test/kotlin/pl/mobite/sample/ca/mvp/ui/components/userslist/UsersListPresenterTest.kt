@@ -46,4 +46,10 @@ class UsersListPresenterTest : BasePresenterTest<UsersListPresenter, UsersListVi
         verify(stateMock).onLoadNextUsersPage()
     }
 
+    @Test
+    fun onAddUserClicked() {
+        presenter.onAddUserClicked()
+
+        verify(stateMock).onAddUserClicked()
+    }
 }

@@ -68,4 +68,14 @@ class DisplayErrorStateTest: AbstractUsersListPresenterStateTest() {
         verifyZeroInteractions(viewMock)
         verifyStateIs<DisplayErrorState>()
     }
+
+    @Test
+    fun onAddUserClicked() {
+        state = DisplayErrorState()
+
+        state.onAddUserClicked()
+
+        verifyZeroInteractions(viewMock)
+        verifyStateIs<DisplayErrorState>()
+    }
 }

@@ -18,5 +18,7 @@ interface UsersListView: View {
 
     fun showError()
 
+    fun showNewUserForm()
+
 }
 

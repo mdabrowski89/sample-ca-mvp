@@ -45,6 +45,26 @@ class NewUserFormStateTest: AbstractEditUserPresenterStateTest() {
     }
 
     @Test
+    fun onCreateUser_emptyName() {
+        state = NewUserFormState()
+
+        state.onCreateUser(userFormData.copy(name = ""))
+
+        verify(viewMock).showInvalidUserData()
+        verifyStateIs<NewUserFormState>()
+    }
+
+    @Test
+    fun onCreateUser_blankName() {
+        state = NewUserFormState()
+
+        state.onCreateUser(userFormData.copy(name = "  "))
+
+        verify(viewMock).showInvalidUserData()
+        verifyStateIs<NewUserFormState>()
+    }
+
+    @Test
     fun onCreateUser_missingAge() {
         state = NewUserFormState()
 

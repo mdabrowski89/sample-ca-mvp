@@ -4,6 +4,8 @@ package pl.mobite.sample.ca.mvp.ui.components.userlistpaging
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
@@ -13,9 +15,11 @@ import pl.mobite.sample.ca.mvp.data.local.room.UserEntity
 import pl.mobite.sample.ca.mvp.data.local.room.toUser
 import pl.mobite.sample.ca.mvp.data.models.User
 import pl.mobite.sample.ca.mvp.ui.base.activity.BasePresenterActivity
+import pl.mobite.sample.ca.mvp.ui.components.edituser.EditUserActivity
 import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListPagingPresenter
 import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListPagingView
-import pl.mobite.sample.ca.mvp.utils.Baker
+
+
 
 class UsersListPagingActivity : BasePresenterActivity<UsersListPagingPresenter>(), UsersListPagingView {
 
@@ -28,9 +32,26 @@ class UsersListPagingActivity : BasePresenterActivity<UsersListPagingPresenter>(
 
         setContentView(R.layout.activity_users_list_with_paging)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         presenter = UsersListPagingPresenter(this)
 
         initUsersView()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.users_list_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        item?.let {
+            when(it.itemId) {
+                android.R.id.home -> finish()
+                R.id.menuItemAddUser -> presenter.onAddUserClicked()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun initUsersView() {
@@ -68,8 +89,11 @@ class UsersListPagingActivity : BasePresenterActivity<UsersListPagingPresenter>(
     }
 
     override fun showUserDetails(user: User) {
-        // TODO: implement details screen
-        Baker.toast("not implemented")
+        startActivity(EditUserActivity.createIntent(this, user))
+    }
+
+    override fun showNewUserForm() {
+        startActivity(EditUserActivity.createIntene(this))
     }
 
     companion object {

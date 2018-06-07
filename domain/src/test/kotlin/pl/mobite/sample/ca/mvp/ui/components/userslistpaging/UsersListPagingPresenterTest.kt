@@ -5,7 +5,6 @@ import org.junit.Test
 import org.powermock.core.classloader.annotations.PrepareForTest
 import pl.mobite.sample.ca.mvp.data.models.User
 import pl.mobite.sample.ca.mvp.ui.base.BasePresenterTest
-import pl.mobite.sample.ca.mvp.ui.components.userslist.UsersListView
 import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.state.AbstractUsersListPagingPresenterState
 import pl.mobite.sample.ca.mvp.utils.extensions.createPowerMock
 import pl.mobite.sample.ca.mvp.utils.extensions.lazyPowerMock
@@ -36,5 +35,12 @@ class UsersListPagingPresenterTest : BasePresenterTest<UsersListPagingPresenter,
         presenter.onRefreshUsers()
 
         verify(stateMock).onRefreshUsers()
+    }
+
+    @Test
+    fun onAddUserClicked() {
+        presenter.onAddUserClicked()
+
+        verify(stateMock).onAddUserClicked()
     }
 }

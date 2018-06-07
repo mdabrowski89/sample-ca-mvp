@@ -9,7 +9,7 @@ class NewUserFormState: AbstractEditUserPresenterState() {
     override fun onCreateUser(userFormData: UserFormData) {
         with(presenter) {
             with(userFormData) {
-                if (name != null && age != null) {
+                if (name != null && name.isNotBlank() && age != null) {
                     setNewState(CreateUserState(User(null, name, age)))
                 } else {
                     view.showInvalidUserData()

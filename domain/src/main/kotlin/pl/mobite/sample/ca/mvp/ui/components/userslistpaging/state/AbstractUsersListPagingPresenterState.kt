@@ -17,4 +17,6 @@ abstract class AbstractUsersListPagingPresenterState : State<UsersListPagingView
     open fun onUserClicked(user: User) {}
 
     open fun onRefreshUsers() {}
+
+    open fun onAddUserClicked() {}
 }

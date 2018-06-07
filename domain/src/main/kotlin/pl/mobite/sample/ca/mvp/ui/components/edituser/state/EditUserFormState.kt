@@ -10,7 +10,7 @@ class EditUserFormState: AbstractEditUserPresenterState() {
         with(presenter) {
             user?.let {
                 with(userFormData) {
-                    if (name != null && age != null) {
+                    if (name != null && name.isNotBlank() && age != null) {
                         setNewState(UpdateUserState(User(it.id, name, age)))
                     } else {
                         view.showInvalidUserData()

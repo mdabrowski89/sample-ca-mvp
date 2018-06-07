@@ -32,6 +32,10 @@ class HomeActivity : BasePresenterActivity<HomePresenter>(), HomeView {
         generateUsersButton.setOnClickListener {
             generateUsers()
         }
+
+        removeUsersButton.setOnClickListener {
+            removeUsers()
+        }
     }
 
     private fun generateUsers() {
@@ -49,6 +53,18 @@ class HomeActivity : BasePresenterActivity<HomePresenter>(), HomeView {
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnComplete {
                     Baker.toast("Users generated")
+                }.subscribe()
+    }
+
+    private fun removeUsers() {
+        Completable
+                .fromCallable {
+                    MyApp.instance.db.userDao().deleteAll()
+                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnComplete {
+                    Baker.toast("Users removed")
                 }.subscribe()
     }
 

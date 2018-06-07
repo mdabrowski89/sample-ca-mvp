@@ -19,4 +19,8 @@ class UsersListPagingPresenter(
     fun onRefreshUsers() {
         state?.onRefreshUsers()
     }
+
+    fun onAddUserClicked() {
+        state?.onAddUserClicked()
+    }
 }

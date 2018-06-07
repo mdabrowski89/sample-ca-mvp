@@ -15,6 +15,12 @@ class DisplayInitialErrorState: AbstractUsersListPresenterState() {
         }
     }
 
+    override fun onAddUserClicked() {
+        with(presenter) {
+            view.showNewUserForm()
+        }
+    }
+
     override fun createSavableInstance() = DisplayInitialErrorState()
 
 }

@@ -46,4 +46,14 @@ class PresentUsersStateTest: AbstractUsersListPagingPresenterStateTest() {
         verify(viewMock).refreshUsers()
         verifyStateIs<PresentUsersState>()
     }
+
+    @Test
+    fun onAddUserClicked() {
+        state = PresentUsersState()
+
+        state.onAddUserClicked()
+
+        verify(viewMock).showNewUserForm()
+        verifyStateIs<PresentUsersState>()
+    }
 }

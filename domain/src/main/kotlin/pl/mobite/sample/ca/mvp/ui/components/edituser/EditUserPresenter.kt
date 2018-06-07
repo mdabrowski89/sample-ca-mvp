@@ -26,7 +26,7 @@ class EditUserPresenter(
 
     override fun restoreData(storage: Storage) {
         super.restoreData(storage)
-        user = storage.restoreSerializable(USER_KEY) as User
+        user = storage.restoreSerializable(USER_KEY) as User?
     }
 
     fun onUpdateUser(userFormData: UserFormData) {

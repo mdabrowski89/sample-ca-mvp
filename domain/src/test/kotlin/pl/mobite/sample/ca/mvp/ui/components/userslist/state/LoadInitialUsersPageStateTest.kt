@@ -52,4 +52,14 @@ class LoadInitialUsersPageStateTest: AbstractUsersListPresenterStateTest() {
         verifyStateIs<LoadInitialUsersPageState>()
     }
 
+    @Test
+    fun onAddUserClicked() {
+        state = LoadInitialUsersPageState()
+
+        state.onAddUserClicked()
+
+        verifyZeroInteractions(viewMock)
+        verifyStateIs<LoadInitialUsersPageState>()
+    }
+
 }

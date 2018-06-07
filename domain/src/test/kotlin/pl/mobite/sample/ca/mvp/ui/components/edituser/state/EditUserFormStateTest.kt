@@ -48,6 +48,28 @@ class EditUserFormStateTest: AbstractEditUserPresenterStateTest() {
     }
 
     @Test
+    fun onUpdateUser_emptyName() {
+        whenever(presenterMock.user).thenReturn(user)
+        state = EditUserFormState()
+
+        state.onUpdateUser(userFormData.copy(name = ""))
+
+        verify(viewMock).showInvalidUserData()
+        verifyStateIs<EditUserFormState>()
+    }
+
+    @Test
+    fun onUpdateUser_blankName() {
+        whenever(presenterMock.user).thenReturn(user)
+        state = EditUserFormState()
+
+        state.onUpdateUser(userFormData.copy(name = "  "))
+
+        verify(viewMock).showInvalidUserData()
+        verifyStateIs<EditUserFormState>()
+    }
+
+    @Test
     fun onUpdateUser_missingAge() {
         whenever(presenterMock.user).thenReturn(user)
         state = EditUserFormState()

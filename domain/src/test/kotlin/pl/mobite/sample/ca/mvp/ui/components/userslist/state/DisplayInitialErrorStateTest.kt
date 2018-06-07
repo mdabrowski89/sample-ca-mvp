@@ -54,4 +54,13 @@ class DisplayInitialErrorStateTest: AbstractUsersListPresenterStateTest() {
         verifyStateIs<DisplayInitialErrorState>()
     }
 
+    @Test
+    fun onAddUserClicked() {
+        state = DisplayInitialErrorState()
+
+        state.onAddUserClicked()
+
+        verify(viewMock).showNewUserForm()
+        verifyStateIs<DisplayInitialErrorState>()
+    }
 }

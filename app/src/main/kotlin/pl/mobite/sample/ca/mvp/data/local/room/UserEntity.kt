@@ -35,7 +35,7 @@ interface UserDao {
     @Query("SELECT * FROM users LIMIT :limit OFFSET :offset")
     fun getRange(offset: Int, limit: Int): List<UserEntity>
 
-    @Query("SELECT * FROM users where id=:id")
+    @Query("SELECT * FROM users where id=:userId")
     fun get(userId: Long): UserEntity
 
     @Insert

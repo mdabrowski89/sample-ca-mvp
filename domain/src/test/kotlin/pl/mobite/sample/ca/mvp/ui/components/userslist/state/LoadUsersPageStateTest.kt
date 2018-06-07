@@ -135,4 +135,14 @@ class LoadUsersPageStateTest: AbstractUsersListPresenterStateTest() {
         verifyZeroInteractions(viewMock)
         verifyStateIs<LoadUsersPageState>()
     }
+
+    @Test
+    fun onAddUserClicked() {
+        state = LoadUsersPageState(pageToLoadMock)
+
+        state.onAddUserClicked()
+
+        verify(viewMock).showNewUserForm()
+        verifyStateIs<LoadUsersPageState>()
+    }
 }
