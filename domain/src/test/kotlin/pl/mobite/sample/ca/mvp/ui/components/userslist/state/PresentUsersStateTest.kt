@@ -91,4 +91,14 @@ class PresentUsersStateTest: AbstractUsersListPresenterStateTest() {
         verifyStateIs<LoadUsersPageState>()
         verifyOnState<LoadUsersPageState> { it.pageToLoad == nextPageIndex }
     }
+
+    @Test
+    fun onAddUserClicked() {
+        state = PresentUsersState()
+
+        state.onAddUserClicked()
+
+        verify(viewMock).showNewUserForm()
+        verifyStateIs<PresentUsersState>()
+    }
 }

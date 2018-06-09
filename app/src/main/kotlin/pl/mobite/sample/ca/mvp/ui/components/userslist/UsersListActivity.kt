@@ -4,13 +4,15 @@ package pl.mobite.sample.ca.mvp.ui.components.userslist
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_users_list.*
 import pl.mobite.sample.ca.mvp.R
 import pl.mobite.sample.ca.mvp.data.models.User
 import pl.mobite.sample.ca.mvp.data.repositories.UsersRepository
 import pl.mobite.sample.ca.mvp.ui.base.activity.BasePresenterActivity
-import pl.mobite.sample.ca.mvp.utils.Baker
+import pl.mobite.sample.ca.mvp.ui.components.edituser.EditUserActivity
 import pl.mobite.sample.ca.mvp.utils.extensions.appComponent
 import pl.mobite.sample.ca.mvp.utils.extensions.visible
 import javax.inject.Inject
@@ -24,12 +26,31 @@ class UsersListActivity : BasePresenterActivity<UsersListPresenter>(), UsersList
 
         setContentView(R.layout.activity_users_list)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         appComponent.inject(this)
 
         presenter = UsersListPresenter(this, usersRepository)
 
         initUsersView()
         initErrorView()
+
+        // TODO: handle refresh users list when returning from edit/add user form
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.users_list_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        item?.let {
+            when(it.itemId) {
+                android.R.id.home -> finish()
+                R.id.menuItemAddUser -> presenter.onAddUserClicked()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun initUsersView() {
@@ -76,12 +97,15 @@ class UsersListActivity : BasePresenterActivity<UsersListPresenter>(), UsersList
     }
 
     override fun showUserDetails(user: User) {
-        // TODO: implement details screen
-        Baker.toast("not implemented")
+        startActivity(EditUserActivity.createIntent(this, user))
     }
 
     override fun showError() {
         showDialog(R.string.users_error_dialog_title, R.string.users_error_message)
+    }
+
+    override fun showNewUserForm() {
+        startActivity(EditUserActivity.createIntene(this))
     }
 
     private fun showDialog(titleRes: Int, messageRes: Int) {

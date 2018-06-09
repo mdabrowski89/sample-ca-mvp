@@ -20,5 +20,11 @@ class PresentUsersState: AbstractUsersListPagingPresenterState() {
         }
     }
 
+    override fun onAddUserClicked() {
+        with(presenter) {
+            view.showNewUserForm()
+        }
+    }
+
     override fun createSavableInstance(): Serializable = PresentUsersState()
 }

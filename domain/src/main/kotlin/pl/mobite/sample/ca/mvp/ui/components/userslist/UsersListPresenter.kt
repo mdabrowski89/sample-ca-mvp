@@ -44,6 +44,10 @@ class UsersListPresenter(
         state?.onLoadNextUsersPage()
     }
 
+    fun onAddUserClicked() {
+        state?.onAddUserClicked()
+    }
+
     companion object {
 
         const val USERS_LIST_KEY = "usersList"

@@ -19,4 +19,6 @@ abstract class AbstractUsersListPresenterState : State<UsersListView> {
     open fun onRefreshUsers() {}
 
     open fun onLoadNextUsersPage() {}
+
+    open fun onAddUserClicked() {}
 }

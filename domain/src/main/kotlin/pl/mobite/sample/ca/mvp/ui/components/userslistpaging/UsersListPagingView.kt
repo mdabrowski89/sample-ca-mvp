@@ -16,5 +16,7 @@ interface UsersListPagingView: View {
 
     fun showUserDetails(user: User)
 
+    fun showNewUserForm()
+
 }
 

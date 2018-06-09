@@ -9,6 +9,7 @@
     <string name="main_show_users">Show Users List</string>
     <string name="main_show_users_with_paging">Show Users List with Paging lib</string>
     <string name="main_generate_users">Generate users</string>
+    <string name="main_remove_users">Remove users</string>
 
     <string name="users_list_title">Users - custom paging</string>
     <string name="users_error_dialog_title">Upsss…</string>
@@ -16,4 +17,22 @@
     <string name="users_empty_view_title">Users not found</string>
 
     <string name="users_list_paging_title">Users - Paging lib</string>
+
+    <string name="users_list_menu_add_user">Add user</string>
+
+    <string name="edit_user_add_user_title">Create user</string>
+    <string name="edit_user_edit_user_title">Edit user</string>
+    <string name="edit_user_form_name_label">Name</string>
+    <string name="edit_user_form_age_label">Age</string>
+    <string name="edit_user_add_user_button">Create user</string>
+    <string name="edit_user_save_user_button">Save user</string>
+    <string name="edit_user_delete_user_button">Delete</string>
+    <string name="edit_user_app_error_message">Ups… something goes wrong</string>
+    <string name="edit_user_invalid_user_data_message">All fields are required</string>
+    <string name="edit_user_delete_user_error_message">Unable to delete user</string>
+    <string name="edit_user_create_user_error_message">Unable to create user</string>
+    <string name="edit_user_update_user_error_message">Unable to update user</string>
+    <string name="edit_user_delete_user_success_message">User removed</string>
+    <string name="edit_user_create_user_success_message">User created</string>
+    <string name="edit_user_update_user_success_message">User updated</string>
 </resources>

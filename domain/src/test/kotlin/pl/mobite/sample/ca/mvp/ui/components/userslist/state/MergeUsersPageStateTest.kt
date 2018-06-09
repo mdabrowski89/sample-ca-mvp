@@ -76,4 +76,14 @@ class MergeUsersPageStateTest: AbstractUsersListPresenterStateTest() {
         verifyZeroInteractions(viewMock)
         verifyStateIs<MergeUsersPageState>()
     }
+
+    @Test
+    fun onAddUserClicked() {
+        state = MergeUsersPageState(newPageMock)
+
+        state.onAddUserClicked()
+
+        verifyZeroInteractions(viewMock)
+        verifyStateIs<MergeUsersPageState>()
+    }
 }

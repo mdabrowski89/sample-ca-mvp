@@ -24,7 +24,10 @@
 
         <activity
             android:label="@string/users_list_paging_title"
-            android:name="pl.mobite.sample.ca.mvp.ui.components.userlistpaging.UsersListPagingActivity"/>
+            android:name=".ui.components.userlistpaging.UsersListPagingActivity"/>
+
+        <activity
+            android:name=".ui.components.edituser.EditUserActivity"/>
 
     </application>
 </manifest>
