@@ -1,4 +1,4 @@
-package pl.mobite.sample.ca.mvp.ui.components.userlistpaging
+package pl.mobite.sample.ca.mvp.ui.components.userslistpaging
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

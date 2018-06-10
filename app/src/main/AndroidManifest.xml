@@ -24,7 +24,7 @@
 
         <activity
             android:label="@string/users_list_paging_title"
-            android:name=".ui.components.userlistpaging.UsersListPagingActivity"/>
+            android:name=".ui.components.userslistpaging.UsersListPagingActivity"/>
 
         <activity
             android:name=".ui.components.edituser.EditUserActivity"/>

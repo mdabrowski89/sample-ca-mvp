@@ -11,7 +11,7 @@ import pl.mobite.sample.ca.mvp.MyApp
 import pl.mobite.sample.ca.mvp.R
 import pl.mobite.sample.ca.mvp.data.local.room.UserEntity
 import pl.mobite.sample.ca.mvp.ui.base.activity.BasePresenterActivity
-import pl.mobite.sample.ca.mvp.ui.components.userlistpaging.UsersListPagingActivity
+import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListPagingActivity
 import pl.mobite.sample.ca.mvp.ui.components.userslist.UsersListActivity
 import pl.mobite.sample.ca.mvp.utils.Baker
 

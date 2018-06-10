@@ -1,4 +1,4 @@
-package pl.mobite.sample.ca.mvp.ui.components.userlistpaging
+package pl.mobite.sample.ca.mvp.ui.components.userslistpaging
 
 
 import android.content.Context
@@ -16,9 +16,6 @@ import pl.mobite.sample.ca.mvp.data.local.room.toUser
 import pl.mobite.sample.ca.mvp.data.models.User
 import pl.mobite.sample.ca.mvp.ui.base.activity.BasePresenterActivity
 import pl.mobite.sample.ca.mvp.ui.components.edituser.EditUserActivity
-import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListPagingPresenter
-import pl.mobite.sample.ca.mvp.ui.components.userslistpaging.UsersListPagingView
-
 
 
 class UsersListPagingActivity : BasePresenterActivity<UsersListPagingPresenter>(), UsersListPagingView {
