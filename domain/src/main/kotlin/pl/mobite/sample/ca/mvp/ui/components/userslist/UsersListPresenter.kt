@@ -48,6 +48,18 @@ class UsersListPresenter(
         state?.onAddUserClicked()
     }
 
+    fun onUsersAdded(addedUsers: List<User>) {
+        state?.onUsersAdded(addedUsers)
+    }
+
+    fun onUsersRemoved(removedUsers: List<User>) {
+        state?.onUsersRemoved(removedUsers)
+    }
+
+    fun onUsersUpdated(updatedUsers: List<User>) {
+        state?.onUsersUpdated(updatedUsers)
+    }
+
     companion object {
 
         const val USERS_LIST_KEY = "usersList"
