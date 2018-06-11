@@ -9,7 +9,9 @@ interface UsersRepository {
 
     fun getUsers(): Single<List<User>>
 
-    fun getUsersPage(index: Int): Single<Page<User>>
+    fun getUsersPage(pageNumber: Int): Single<Page<User>>
+
+    fun getUsersPages(pageNumbers: Int): Single<List<Page<User>>>
 
     fun getUser(userId: Long): Single<User>
 

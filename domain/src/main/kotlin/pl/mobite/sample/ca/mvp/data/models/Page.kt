@@ -5,17 +5,17 @@ import java.io.Serializable
 
 data class Page<out T>(val data: List<T>, val metadata: PageMetadata): Serializable
 
-data class PageMetadata(val index: Int, private val pageNumbers: Int): Serializable {
+data class PageMetadata(val pageNumber: Int, private val allPages: Int): Serializable {
 
-    private val lastPageIndex = FIRST_PAGE_INDEX + pageNumbers - 1
+    private val lastPageIndex = FIRST_PAGE_INDEX + allPages - 1
 
-    val isInitialPage = index == INITIAL_PAGE_INDEX
+    val isInitialPage = pageNumber == INITIAL_PAGE_INDEX
 
-    val isFirst = index == FIRST_PAGE_INDEX
+    val isFirst = pageNumber == FIRST_PAGE_INDEX
 
-    val isLast = index == lastPageIndex
+    val isLast = pageNumber == lastPageIndex
 
-    val nextIndex = index + 1
+    val nextIndex = pageNumber + 1
 
     companion object {
         const val INITIAL_PAGE_INDEX: Int = -1

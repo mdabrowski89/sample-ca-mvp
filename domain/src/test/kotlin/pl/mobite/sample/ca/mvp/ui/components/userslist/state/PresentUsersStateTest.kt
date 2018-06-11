@@ -47,7 +47,7 @@ class PresentUsersStateTest: AbstractUsersListPresenterStateTest() {
     fun onApplied_onPageLoadOnStart() {
         val currentPage = 1
         val pageToLoad = currentPage + 1
-        whenever(pageMetadataMock.index).thenReturn(currentPage)
+        whenever(pageMetadataMock.pageNumber).thenReturn(currentPage)
         whenever(pageToLoadOnStartMock).thenReturn(pageToLoad)
         state = PresentUsersState(pageToLoadOnStartMock)
 
