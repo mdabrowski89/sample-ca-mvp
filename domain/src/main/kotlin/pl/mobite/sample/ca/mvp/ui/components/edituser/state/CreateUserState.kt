@@ -14,7 +14,7 @@ class CreateUserState(private val newUser: User): AbstractEditUserPresenterState
             disposable = usersRepository.createUser(newUser).subscribe(
                     /** onComplete */
                     {
-                        view.showCreateSuccess()
+                        view.onCreateSuccess()
                         setNewState(FinalState())
                     },
                     /** onError */

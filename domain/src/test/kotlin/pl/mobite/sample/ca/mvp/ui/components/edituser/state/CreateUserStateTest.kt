@@ -36,7 +36,7 @@ class CreateUserStateTest: AbstractEditUserPresenterStateTest() {
 
         state.onApplied()
 
-        verify(viewMock).showCreateSuccess()
+        verify(viewMock).onCreateSuccess()
         verifyStateIs<FinalState>()
     }
 

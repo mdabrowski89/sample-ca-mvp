@@ -19,7 +19,7 @@ class LoadUsersPageState(
             /** If data are refreshed show different loader */
             if (isInitialLoading()) {
                 view.showLoadIndicator()
-            } else if (pageToLoad == PageMetadata.FIRST_PAGE_INDEX) {
+            } else if (pageToLoad == PageMetadata.FIRST_PAGE_NUMBER) {
                 view.showRefreshIndicator()
             }
 
@@ -51,6 +51,12 @@ class LoadUsersPageState(
     override fun onAddUserClicked() {
         with(presenter) {
             view.showNewUserForm()
+        }
+    }
+
+    override fun onUsersListUpdated() {
+        with(presenter) {
+            setNewState(RefreshUsersPagesState(pageMetadata.currentPageNumber))
         }
     }
 

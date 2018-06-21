@@ -14,7 +14,7 @@ class UpdateUserState(private val editedUser: User): AbstractEditUserPresenterSt
             disposable = usersRepository.updateUser(editedUser).subscribe(
                     /** onComplete */
                     {
-                        view.showUpdateSuccess()
+                        view.onUpdateSuccess()
                         setNewState(FinalState())
                     },
                     /** onError */

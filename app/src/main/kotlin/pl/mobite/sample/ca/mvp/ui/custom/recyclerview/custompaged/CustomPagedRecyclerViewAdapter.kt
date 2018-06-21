@@ -23,7 +23,7 @@ abstract class CustomPagedRecyclerViewAdapter<T>: RecyclerView.Adapter<CustomVie
 
     val hasMoreItems = AtomicBoolean(false)
 
-    private var items = listOf<T>()
+    protected var items = listOf<T>()
 
     final override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder<T> {
         return when(viewType) {
@@ -46,7 +46,7 @@ abstract class CustomPagedRecyclerViewAdapter<T>: RecyclerView.Adapter<CustomVie
 
     abstract fun getViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder<T>
 
-    fun setItems(items: List<T>, hasMore: Boolean) {
+    open fun setItems(items: List<T>, hasMore: Boolean) {
         this.items = items
         this.hasMoreItems.set(hasMore)
         notifyDataSetChanged()

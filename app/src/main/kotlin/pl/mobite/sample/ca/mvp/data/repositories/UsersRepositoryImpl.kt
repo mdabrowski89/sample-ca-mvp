@@ -37,12 +37,12 @@ class UsersRepositoryImpl(private val userDao: UserDao) : UsersRepository {
                 .fromCallable {
                     val count = userDao.count()
                     val allPages = Math.ceil(count.toDouble() / ITEMS_PER_PAGE).toInt()
-                    val limit = pageNumbers * ITEMS_PER_PAGE
+                    val limit = (pageNumbers + 1) * ITEMS_PER_PAGE // pages are enumerated from 0
                     val data = userDao.getRange(0, limit).map {
                         it.toUser()
                     }
-                    var pageNumber = PageMetadata.FIRST_PAGE_INDEX
-                    data.chunked(ITEMS_PER_PAGE, { Page(it, PageMetadata(pageNumber++, allPages)) })
+                    var pageNumber = PageMetadata.FIRST_PAGE_NUMBER
+                    data.chunked(ITEMS_PER_PAGE) { Page(it.toList(), PageMetadata(pageNumber++, allPages)) }
                 }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

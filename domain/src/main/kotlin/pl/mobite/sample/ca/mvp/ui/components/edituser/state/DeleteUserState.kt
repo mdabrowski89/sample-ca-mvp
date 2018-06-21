@@ -14,7 +14,7 @@ class DeleteUserState: AbstractEditUserPresenterState() {
                 disposable = usersRepository.deleteUser(it).subscribe(
                         /** onComplete */
                         {
-                            view.showDeleteSuccess()
+                            view.onDeleteSuccess()
                             setNewState(FinalState())
                         },
                         /** onError */

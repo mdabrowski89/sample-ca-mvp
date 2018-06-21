@@ -47,7 +47,7 @@ class PresentUsersStateTest: AbstractUsersListPresenterStateTest() {
     fun onApplied_onPageLoadOnStart() {
         val currentPage = 1
         val pageToLoad = currentPage + 1
-        whenever(pageMetadataMock.pageNumber).thenReturn(currentPage)
+        whenever(pageMetadataMock.currentPageNumber).thenReturn(currentPage)
         whenever(pageToLoadOnStartMock).thenReturn(pageToLoad)
         state = PresentUsersState(pageToLoadOnStartMock)
 
@@ -82,7 +82,7 @@ class PresentUsersStateTest: AbstractUsersListPresenterStateTest() {
     @Test
     fun onLoadNextUsersPage() {
         val nextPageIndex: Int = createPowerMock()
-        whenever(pageMetadataMock.nextIndex).thenReturn(nextPageIndex)
+        whenever(pageMetadataMock.nextPageNumber).thenReturn(nextPageIndex)
         state = PresentUsersState(pageToLoadOnStartMock)
 
         state.onLoadNextUsersPage()
@@ -100,5 +100,15 @@ class PresentUsersStateTest: AbstractUsersListPresenterStateTest() {
 
         verify(viewMock).showNewUserForm()
         verifyStateIs<PresentUsersState>()
+    }
+
+    @Test
+    fun onUsersListUpdated() {
+        state = PresentUsersState()
+
+        state.onUsersListUpdated()
+
+        verifyZeroInteractions(viewMock)
+        verifyStateIs<RefreshUsersPagesState>()
     }
 }

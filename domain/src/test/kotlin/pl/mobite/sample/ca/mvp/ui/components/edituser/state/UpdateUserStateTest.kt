@@ -36,7 +36,7 @@ class UpdateUserStateTest: AbstractEditUserPresenterStateTest() {
 
         state.onApplied()
 
-        verify(viewMock).showUpdateSuccess()
+        verify(viewMock).onUpdateSuccess()
         verifyStateIs<FinalState>()
     }
 

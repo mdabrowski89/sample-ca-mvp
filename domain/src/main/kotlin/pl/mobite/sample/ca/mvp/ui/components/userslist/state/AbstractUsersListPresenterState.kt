@@ -22,9 +22,5 @@ abstract class AbstractUsersListPresenterState : State<UsersListView> {
 
     open fun onAddUserClicked() {}
 
-    open fun onUsersAdded(addedUsers: List<User>) {}
-
-    open fun onUsersRemoved(removedUsers: List<User>) {}
-
-    open fun onUsersUpdated(updatedUsers: List<User>) {}
+    open fun onUsersListUpdated() {}
 }

@@ -48,7 +48,7 @@ class DeleteUserStateTest: AbstractEditUserPresenterStateTest() {
 
         state.onApplied()
 
-        verify(viewMock).showDeleteSuccess()
+        verify(viewMock).onDeleteSuccess()
         verifyStateIs<FinalState>()
     }
 

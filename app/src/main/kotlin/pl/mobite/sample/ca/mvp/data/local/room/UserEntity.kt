@@ -23,16 +23,16 @@ fun User.toUserEntity() =
 @Dao
 interface UserDao {
 
-    @Query("SELECT * FROM users")
+    @Query("SELECT * FROM users ORDER BY user_name")
     fun getAllUsers(): DataSource.Factory<Int, UserEntity>
 
     @Query("SELECT count(*) FROM users")
     fun count(): Int
 
-    @Query("SELECT * FROM users")
+    @Query("SELECT * FROM users ORDER BY user_name")
     fun getAll(): List<UserEntity>
 
-    @Query("SELECT * FROM users LIMIT :limit OFFSET :offset")
+    @Query("SELECT * FROM users ORDER BY user_name LIMIT :limit OFFSET :offset")
     fun getRange(offset: Int, limit: Int): List<UserEntity>
 
     @Query("SELECT * FROM users where id=:userId")

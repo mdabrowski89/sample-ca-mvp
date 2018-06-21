@@ -7,7 +7,7 @@ import java.io.Serializable
 
 
 class RefreshUsersPagesState(
-        val pageNumbers: Int
+        private val pageNumbers: Int
 ) : AbstractUsersListPresenterState() {
 
     private var disposable: Disposable? = null
@@ -25,8 +25,10 @@ class RefreshUsersPagesState(
                     .subscribe(
                     /** onSuccess */
                     { newPages: List<Page<User>> ->
+                        if (!newPages.isEmpty()) {
+                            pageMetadata = newPages.last().metadata
+                        }
                         users = newPages.flatMap { it.data }
-                        pageMetadata = newPages.last().metadata
                         setNewState(PresentUsersState())
                     },
                     /** onError */
@@ -50,6 +52,12 @@ class RefreshUsersPagesState(
     override fun onAddUserClicked() {
         with(presenter) {
             view.showNewUserForm()
+        }
+    }
+
+    override fun onUsersListUpdated() {
+        with(presenter) {
+            setNewState(RefreshUsersPagesState(pageMetadata.currentPageNumber))
         }
     }
 

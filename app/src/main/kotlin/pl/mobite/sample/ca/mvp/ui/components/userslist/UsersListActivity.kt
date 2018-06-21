@@ -34,8 +34,22 @@ class UsersListActivity : BasePresenterActivity<UsersListPresenter>(), UsersList
 
         initUsersView()
         initErrorView()
+    }
 
-        // TODO: handle refresh users list when returning from edit/add user form
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == ADD_USER_REQ_CODE) {
+            if (resultCode == EditUserActivity.USER_ADDED_RESULT) {
+                presenter.onUsersListUpdated()
+            }
+        } else if (requestCode == EDIT_USER_REQ_CODE) {
+            if (resultCode == EditUserActivity.USER_EDITED_RESULT) {
+                presenter.onUsersListUpdated()
+            } else if (resultCode == EditUserActivity.USER_DELETED_RESULT) {
+                presenter.onUsersListUpdated()
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -97,7 +111,7 @@ class UsersListActivity : BasePresenterActivity<UsersListPresenter>(), UsersList
     }
 
     override fun showUserDetails(user: User) {
-        startActivity(EditUserActivity.createIntent(this, user))
+        startActivityForResult(EditUserActivity.createIntent(this, user), EDIT_USER_REQ_CODE)
     }
 
     override fun showError() {
@@ -105,7 +119,7 @@ class UsersListActivity : BasePresenterActivity<UsersListPresenter>(), UsersList
     }
 
     override fun showNewUserForm() {
-        startActivity(EditUserActivity.createIntene(this))
+        startActivityForResult(EditUserActivity.createIntene(this), ADD_USER_REQ_CODE)
     }
 
     private fun showDialog(titleRes: Int, messageRes: Int) {
@@ -126,6 +140,9 @@ class UsersListActivity : BasePresenterActivity<UsersListPresenter>(), UsersList
     }
 
     companion object {
+
+        private const val ADD_USER_REQ_CODE = 444
+        private const val EDIT_USER_REQ_CODE = 445
 
         fun createIntent(context: Context) = Intent(context, UsersListActivity::class.java)
     }

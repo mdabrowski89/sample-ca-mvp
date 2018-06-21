@@ -29,13 +29,19 @@ class PresentUsersState(
 
     override fun onLoadNextUsersPage() {
         with(presenter) {
-            setNewState(LoadUsersPageState(pageMetadata.nextIndex))
+            setNewState(LoadUsersPageState(pageMetadata.nextPageNumber))
         }
     }
 
     override fun onAddUserClicked() {
         with(presenter) {
             view.showNewUserForm()
+        }
+    }
+
+    override fun onUsersListUpdated() {
+        with(presenter) {
+            setNewState(RefreshUsersPagesState(pageMetadata.currentPageNumber))
         }
     }
 
