@@ -19,11 +19,11 @@ interface EditUserView: View {
     fun showDeleteIndicator()
 
 
-    fun showCreateSuccess()
+    fun onCreateSuccess()
 
-    fun showUpdateSuccess()
+    fun onUpdateSuccess()
 
-    fun showDeleteSuccess()
+    fun onDeleteSuccess()
 
     fun showCreateError()
 

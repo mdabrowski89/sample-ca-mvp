@@ -84,15 +84,18 @@ class EditUserActivity: BasePresenterActivity<EditUserPresenter>(), EditUserView
         renderView(showProgress = true)
     }
 
-    override fun showCreateSuccess() {
+    override fun onCreateSuccess() {
+        setResult(USER_ADDED_RESULT)
         Baker.toast(R.string.edit_user_create_user_success_message)
     }
 
-    override fun showUpdateSuccess() {
+    override fun onUpdateSuccess() {
+        setResult(USER_EDITED_RESULT)
         Baker.toast(R.string.edit_user_update_user_success_message)
     }
 
-    override fun showDeleteSuccess() {
+    override fun onDeleteSuccess() {
+        setResult(USER_DELETED_RESULT)
         Baker.toast(R.string.edit_user_delete_user_success_message)
     }
 
@@ -142,6 +145,9 @@ class EditUserActivity: BasePresenterActivity<EditUserPresenter>(), EditUserView
     companion object {
 
         private const val EXTRA_USER_ID = "EXTRA_USER_ID"
+        const val USER_DELETED_RESULT = 20
+        const val USER_EDITED_RESULT = 21
+        const val USER_ADDED_RESULT = 22
 
         fun createIntent(context: Context, user: User) = Intent(context, EditUserActivity::class.java).apply {
             putExtra(EXTRA_USER_ID, user.id)

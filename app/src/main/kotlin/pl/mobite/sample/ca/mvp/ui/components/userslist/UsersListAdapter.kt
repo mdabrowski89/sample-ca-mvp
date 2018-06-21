@@ -12,7 +12,15 @@ import pl.mobite.sample.ca.mvp.utils.extensions.inflate
 
 class UsersListAdapter: CustomPagedRecyclerViewAdapter<User>() {
 
+    init {
+        setHasStableIds(true)
+    }
+
     override fun getViewHolder(parent: ViewGroup, viewType: Int) = UserViewHolder(parent.inflate(R.layout.item_user))
+
+    override fun getItemId(position: Int): Long {
+        return (if (items.size > position) items[position].id else null) ?: super.getItemId(position)
+    }
 }
 
 class UserViewHolder(itemView: View) : CustomViewHolder<User>(itemView) {

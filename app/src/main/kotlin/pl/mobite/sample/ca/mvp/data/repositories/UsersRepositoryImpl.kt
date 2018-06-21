@@ -14,19 +14,35 @@ import pl.mobite.sample.ca.mvp.data.models.User
 
 class UsersRepositoryImpl(private val userDao: UserDao) : UsersRepository {
 
-    override fun getUsersPage(index: Int): Single<Page<User>> {
+    override fun getUsersPage(pageNumber: Int): Single<Page<User>> {
         return Single
                 .fromCallable {
                     val count = userDao.count()
-                    val pageNumber = Math.ceil(count.toDouble() / ITEMS_PER_PAGE).toInt()
-                    val offset = index * ITEMS_PER_PAGE
+                    val allPages = Math.ceil(count.toDouble() / ITEMS_PER_PAGE).toInt()
+                    val offset = pageNumber * ITEMS_PER_PAGE
                     if (offset > count) {
                         throw Exception()
                     }
                     val data = userDao.getRange(offset, ITEMS_PER_PAGE).map {
                         it.toUser()
                     }
-                    Page(data, PageMetadata(index, pageNumber))
+                    Page(data, PageMetadata(pageNumber, allPages))
+                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun getUsersPages(pageNumbers: Int): Single<List<Page<User>>> {
+        return Single
+                .fromCallable {
+                    val count = userDao.count()
+                    val allPages = Math.ceil(count.toDouble() / ITEMS_PER_PAGE).toInt()
+                    val limit = (pageNumbers + 1) * ITEMS_PER_PAGE // pages are enumerated from 0
+                    val data = userDao.getRange(0, limit).map {
+                        it.toUser()
+                    }
+                    var pageNumber = PageMetadata.FIRST_PAGE_NUMBER
+                    data.chunked(ITEMS_PER_PAGE) { Page(it.toList(), PageMetadata(pageNumber++, allPages)) }
                 }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

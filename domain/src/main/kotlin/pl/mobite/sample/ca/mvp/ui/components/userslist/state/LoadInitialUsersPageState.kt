@@ -8,7 +8,7 @@ class LoadInitialUsersPageState : AbstractUsersListPresenterState() {
 
     override fun onApplied() {
         with(presenter) {
-            setNewState(LoadUsersPageState(PageMetadata.FIRST_PAGE_INDEX))
+            setNewState(LoadUsersPageState(PageMetadata.FIRST_PAGE_NUMBER))
         }
     }
 

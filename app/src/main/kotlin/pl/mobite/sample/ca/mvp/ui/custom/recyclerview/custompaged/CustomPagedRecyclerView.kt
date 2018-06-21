@@ -2,6 +2,7 @@ package pl.mobite.sample.ca.mvp.ui.custom.recyclerview.custompaged
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.ViewTreeObserver
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.custom_recycler_view.view.*
 import pl.mobite.sample.ca.mvp.ui.custom.recyclerview.CustomRecyclerView
@@ -43,6 +44,16 @@ abstract class CustomPagedRecyclerView<T, out A: CustomPagedRecyclerViewAdapter<
     fun setItems(items: List<T>, hasMore: Boolean) {
         adapter.setItems(items, hasMore)
         renderView(showRecyclerView = !items.isEmpty(), showEmptyView = items.isEmpty())
+
+        /**
+         * Check if we do not need to load next page immediately
+         */
+        viewTreeObserver.addOnGlobalLayoutListener(object: ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                loadNextPageIfNeeded()
+                viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        })
     }
 
     override fun setRefreshing() {
@@ -55,22 +66,28 @@ abstract class CustomPagedRecyclerView<T, out A: CustomPagedRecyclerViewAdapter<
         adapter.notifyDataSetChanged()
     }
 
-    inner class OnScrollListener: RecyclerView.OnScrollListener() {
-
-        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-            super.onScrolled(recyclerView, dx, dy)
-            if (!adapter.hasMoreItems.get() || dy <= 0) {
-                return
-            }
-            /**
-             * Load next page if user scroll to the bottom
-             */
+    /**
+     * Load next page if user scroll to the bottom
+     */
+    fun loadNextPageIfNeeded() {
+        if (adapter.hasMoreItems.get()) {
             with(recyclerView) {
                 val lastVisibleItemPosition = childCount + layoutManager!!.getPosition(getChildAt(0))
                 if (lastVisibleItemPosition >= layoutManager!!.itemCount) {
                     onScrolledToNextPageListener?.invoke()
                 }
             }
+        }
+    }
+
+    inner class OnScrollListener: RecyclerView.OnScrollListener() {
+
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            if (dy <= 0) {
+                return
+            }
+            loadNextPageIfNeeded()
         }
     }
 }

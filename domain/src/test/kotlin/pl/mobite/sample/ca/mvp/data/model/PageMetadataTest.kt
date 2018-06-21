@@ -8,23 +8,23 @@ class PageMetadataTest {
 
     @Test
     fun testInitialPage() {
-        val testedPage = PageMetadata(PageMetadata.INITIAL_PAGE_INDEX, 5)
+        val testedPage = PageMetadata(PageMetadata.INITIAL_PAGE_NUMBER, 5)
         assertTrue(testedPage.isInitialPage)
-        assertTrue(testedPage.nextIndex == PageMetadata.FIRST_PAGE_INDEX)
+        assertTrue(testedPage.nextPageNumber == PageMetadata.FIRST_PAGE_NUMBER)
     }
 
     @Test
     fun testFirstPage() {
-        val testedPage = PageMetadata(PageMetadata.FIRST_PAGE_INDEX, 5)
+        val testedPage = PageMetadata(PageMetadata.FIRST_PAGE_NUMBER, 5)
         assertTrue(!testedPage.isInitialPage)
         assertTrue(testedPage.isFirst)
         assertTrue(!testedPage.isLast)
-        assertTrue(testedPage.nextIndex == 1)
+        assertTrue(testedPage.nextPageNumber == 1)
     }
 
     @Test
     fun testOnlyOnePage() {
-        val testedPage = PageMetadata(PageMetadata.FIRST_PAGE_INDEX, 1)
+        val testedPage = PageMetadata(PageMetadata.FIRST_PAGE_NUMBER, 1)
         assertTrue(!testedPage.isInitialPage)
         assertTrue(testedPage.isFirst)
         assertTrue(testedPage.isLast)
@@ -36,7 +36,7 @@ class PageMetadataTest {
         assertTrue(!testedPage.isInitialPage)
         assertTrue(!testedPage.isFirst)
         assertTrue(!testedPage.isLast)
-        assertTrue(testedPage.nextIndex == 3)
+        assertTrue(testedPage.nextPageNumber == 3)
     }
 
     @Test

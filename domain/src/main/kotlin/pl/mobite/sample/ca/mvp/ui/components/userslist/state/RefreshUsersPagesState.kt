@@ -2,13 +2,12 @@ package pl.mobite.sample.ca.mvp.ui.components.userslist.state
 
 import io.reactivex.disposables.Disposable
 import pl.mobite.sample.ca.mvp.data.models.Page
-import pl.mobite.sample.ca.mvp.data.models.PageMetadata
 import pl.mobite.sample.ca.mvp.data.models.User
 import java.io.Serializable
 
 
-class LoadUsersPageState(
-        val pageToLoad: Int
+class RefreshUsersPagesState(
+        private val pageNumbers: Int
 ) : AbstractUsersListPresenterState() {
 
     private var disposable: Disposable? = null
@@ -19,16 +18,18 @@ class LoadUsersPageState(
             /** If data are refreshed show different loader */
             if (isInitialLoading()) {
                 view.showLoadIndicator()
-            } else if (pageToLoad == PageMetadata.FIRST_PAGE_NUMBER) {
-                view.showRefreshIndicator()
             }
 
             /** Load page from repository, repository implementation is responsible for scheduling */
-            disposable = usersRepository.getUsersPage(pageToLoad)
+            disposable = usersRepository.getUsersPages(pageNumbers)
                     .subscribe(
                     /** onSuccess */
-                    { newPage: Page<User> ->
-                        setNewState(MergeUsersPageState(newPage))
+                    { newPages: List<Page<User>> ->
+                        if (!newPages.isEmpty()) {
+                            pageMetadata = newPages.last().metadata
+                        }
+                        users = newPages.flatMap { it.data }
+                        setNewState(PresentUsersState())
                     },
                     /** onError */
                     { _: Throwable? ->

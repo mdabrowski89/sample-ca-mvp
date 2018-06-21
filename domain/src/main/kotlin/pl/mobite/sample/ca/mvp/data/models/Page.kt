@@ -5,20 +5,20 @@ import java.io.Serializable
 
 data class Page<out T>(val data: List<T>, val metadata: PageMetadata): Serializable
 
-data class PageMetadata(val index: Int, private val pageNumbers: Int): Serializable {
+data class PageMetadata(val currentPageNumber: Int, private val allPagesNumber: Int): Serializable {
 
-    private val lastPageIndex = FIRST_PAGE_INDEX + pageNumbers - 1
+    private val lastPageNumber = FIRST_PAGE_NUMBER + allPagesNumber - 1
 
-    val isInitialPage = index == INITIAL_PAGE_INDEX
+    val isInitialPage = currentPageNumber == INITIAL_PAGE_NUMBER
 
-    val isFirst = index == FIRST_PAGE_INDEX
+    val isFirst = currentPageNumber == FIRST_PAGE_NUMBER
 
-    val isLast = index == lastPageIndex
+    val isLast = currentPageNumber == lastPageNumber
 
-    val nextIndex = index + 1
+    val nextPageNumber = currentPageNumber + 1
 
     companion object {
-        const val INITIAL_PAGE_INDEX: Int = -1
-        const val FIRST_PAGE_INDEX: Int = 0
+        const val INITIAL_PAGE_NUMBER: Int = -1
+        const val FIRST_PAGE_NUMBER: Int = 0
     }
 }
