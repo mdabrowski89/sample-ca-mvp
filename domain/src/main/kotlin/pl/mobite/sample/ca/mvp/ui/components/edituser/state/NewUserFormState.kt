@@ -6,6 +6,12 @@ import pl.mobite.sample.ca.mvp.data.models.UserFormData
 
 class NewUserFormState: AbstractEditUserPresenterState() {
 
+    override fun onApplied() {
+        with(presenter) {
+            view.showNewUserForm()
+        }
+    }
+
     override fun onCreateUser(userFormData: UserFormData) {
         with(presenter) {
             with(userFormData) {

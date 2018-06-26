@@ -6,6 +6,12 @@ import pl.mobite.sample.ca.mvp.data.models.UserFormData
 
 class EditUserFormState: AbstractEditUserPresenterState() {
 
+    override fun onApplied() {
+        with(presenter) {
+            view.showUserForm()
+        }
+    }
+
     override fun onUpdateUser(userFormData: UserFormData) {
         with(presenter) {
             user?.let {

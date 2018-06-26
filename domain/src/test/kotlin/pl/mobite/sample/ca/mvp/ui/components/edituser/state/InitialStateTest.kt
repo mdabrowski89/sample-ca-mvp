@@ -2,7 +2,6 @@ package pl.mobite.sample.ca.mvp.ui.components.edituser.state
 
 import org.junit.Before
 import org.junit.Test
-import pl.mobite.sample.ca.mvp.utils.extensions.verify
 import pl.mobite.sample.ca.mvp.utils.extensions.verifyZeroInteractions
 import pl.mobite.sample.ca.mvp.utils.extensions.whenever
 
@@ -22,7 +21,7 @@ class InitialStateTest: AbstractEditUserPresenterStateTest() {
 
         state.onApplied()
 
-        verify(viewMock).showNewUserForm()
+        verifyZeroInteractions(viewMock)
         verifyStateIs<NewUserFormState>()
     }
 

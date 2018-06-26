@@ -48,7 +48,7 @@ class LoadUserStateTest: AbstractEditUserPresenterStateTest() {
 
         state.onApplied()
 
-        verify(viewMock).showUserForm(user)
+        verify(viewMock).setUser(user)
         verifyStateIs<EditUserFormState>()
     }
 

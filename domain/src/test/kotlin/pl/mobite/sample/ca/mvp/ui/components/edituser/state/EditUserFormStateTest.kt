@@ -21,7 +21,7 @@ class EditUserFormStateTest: AbstractEditUserPresenterStateTest() {
 
         state.onApplied()
 
-        verifyZeroInteractions(viewMock)
+        verify(viewMock).showUserForm()
         verifyStateIs<EditUserFormState>()
     }
 

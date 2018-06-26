@@ -20,7 +20,7 @@ class NewUserFormStateTest: AbstractEditUserPresenterStateTest() {
 
         state.onApplied()
 
-        verifyZeroInteractions(viewMock)
+        verify(viewMock).showNewUserForm()
         verifyStateIs<NewUserFormState>()
     }
 

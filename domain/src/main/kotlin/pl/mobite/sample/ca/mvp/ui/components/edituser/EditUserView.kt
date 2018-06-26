@@ -8,7 +8,9 @@ interface EditUserView: View {
 
     fun showLoadIndicator()
 
-    fun showUserForm(user: User)
+    fun setUser(user: User)
+
+    fun showUserForm()
 
     fun showNewUserForm()
 

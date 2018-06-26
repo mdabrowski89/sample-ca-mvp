@@ -64,8 +64,12 @@ class EditUserActivity: BasePresenterActivity<EditUserPresenter>(), EditUserView
         renderView(showForm = false, showProgress = true)
     }
 
-    override fun showUserForm(user: User) {
-        renderView(user = user, showSaveButton = true, showDeleteButton = true)
+    override fun setUser(user: User) {
+        renderView(user = user)
+    }
+
+    override fun showUserForm() {
+        renderView(showSaveButton = true, showDeleteButton = true)
     }
 
     override fun showNewUserForm() {

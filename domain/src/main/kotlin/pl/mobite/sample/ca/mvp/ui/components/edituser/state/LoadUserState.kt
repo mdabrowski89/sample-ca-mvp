@@ -16,7 +16,7 @@ class LoadUserState: AbstractEditUserPresenterState() {
                         /** onSuccess */
                         { user: User ->
                             this.user = user
-                            view.showUserForm(user)
+                            view.setUser(user)
                             setNewState(EditUserFormState())
                         },
                         /** onError */
